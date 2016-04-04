@@ -14,6 +14,8 @@
 		01839F081CB208A800BDD110 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01839F061CB208A800BDD110 /* LaunchScreen.storyboard */; };
 		01839F131CB208A800BDD110 /* StudyBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01839F121CB208A800BDD110 /* StudyBuddyTests.swift */; };
 		01839F1E1CB208A800BDD110 /* StudyBuddyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01839F1D1CB208A800BDD110 /* StudyBuddyUITests.swift */; };
+		01839F311CB20C7C00BDD110 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01839F2F1CB20C7C00BDD110 /* FBSDKCoreKit.framework */; };
+		01839F321CB20C7C00BDD110 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01839F301CB20C7C00BDD110 /* FBSDKLoginKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		01839F191CB208A800BDD110 /* StudyBuddyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StudyBuddyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		01839F1D1CB208A800BDD110 /* StudyBuddyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyBuddyUITests.swift; sourceTree = "<group>"; };
 		01839F1F1CB208A800BDD110 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01839F2F1CB20C7C00BDD110 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		01839F301CB20C7C00BDD110 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01839F321CB20C7C00BDD110 /* FBSDKLoginKit.framework in Frameworks */,
+				01839F311CB20C7C00BDD110 /* FBSDKCoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +83,8 @@
 		01839EF11CB208A800BDD110 = {
 			isa = PBXGroup;
 			children = (
+				01839F2F1CB20C7C00BDD110 /* FBSDKCoreKit.framework */,
+				01839F301CB20C7C00BDD110 /* FBSDKLoginKit.framework */,
 				01839EFC1CB208A800BDD110 /* StudyBuddy */,
 				01839F111CB208A800BDD110 /* StudyBuddyTests */,
 				01839F1C1CB208A800BDD110 /* StudyBuddyUITests */,
@@ -193,6 +201,7 @@
 				TargetAttributes = {
 					01839EF91CB208A800BDD110 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 25GDV2Q4B6;
 					};
 					01839F0D1CB208A800BDD110 = {
 						CreatedOnToolsVersion = 7.3;
@@ -399,10 +408,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = StudyBuddy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lucasmarzocco.StudyBuddy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -410,10 +426,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = StudyBuddy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lucasmarzocco.StudyBuddy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
