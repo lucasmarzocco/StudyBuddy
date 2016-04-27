@@ -16,6 +16,7 @@
 		01839F1E1CB208A800BDD110 /* StudyBuddyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01839F1D1CB208A800BDD110 /* StudyBuddyUITests.swift */; };
 		01839F311CB20C7C00BDD110 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01839F2F1CB20C7C00BDD110 /* FBSDKCoreKit.framework */; };
 		01839F321CB20C7C00BDD110 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01839F301CB20C7C00BDD110 /* FBSDKLoginKit.framework */; };
+		01CAD4EF1CD01C6100620229 /* secondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CAD4EE1CD01C6100620229 /* secondViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		01839F1F1CB208A800BDD110 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01839F2F1CB20C7C00BDD110 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		01839F301CB20C7C00BDD110 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		01CAD4EE1CD01C6100620229 /* secondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = secondViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			children = (
 				01839EFD1CB208A800BDD110 /* AppDelegate.swift */,
 				01839EFF1CB208A800BDD110 /* ViewController.swift */,
+				01CAD4EE1CD01C6100620229 /* secondViewController.swift */,
 				01839F011CB208A800BDD110 /* Main.storyboard */,
 				01839F041CB208A800BDD110 /* Assets.xcassets */,
 				01839F061CB208A800BDD110 /* LaunchScreen.storyboard */,
@@ -266,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01839F001CB208A800BDD110 /* ViewController.swift in Sources */,
+				01CAD4EF1CD01C6100620229 /* secondViewController.swift in Sources */,
 				01839EFE1CB208A800BDD110 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -505,6 +509,7 @@
 				01839F241CB208A800BDD110 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		01839F251CB208A800BDD110 /* Build configuration list for PBXNativeTarget "StudyBuddyTests" */ = {
 			isa = XCConfigurationList;
@@ -513,6 +518,7 @@
 				01839F271CB208A800BDD110 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		01839F281CB208A800BDD110 /* Build configuration list for PBXNativeTarget "StudyBuddyUITests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +527,7 @@
 				01839F2A1CB208A800BDD110 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

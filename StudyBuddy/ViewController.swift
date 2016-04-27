@@ -11,19 +11,82 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 
 
-class ViewController: UIViewController, FBSDKLoginButtonDelegate, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController {
     
     
-    @IBOutlet weak var button: FBSDKLoginButton!
+    /*@IBOutlet weak var button: FBSDKLoginButton!
     @IBOutlet weak var picture: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var stindr: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var classButton: UIButton!
-    @IBOutlet var wordField: UITextField?
+    @IBOutlet var wordField: UITextField? */
+    
+    var profilePicture:UIImageView = UIImageView()
+    var firstName:NSString!
+    var lastName:NSString!
+    
+    
+    //Sets image to Facebook profile picture image
+    func returnUserInfo(accessToken: NSString, firstName: NSString, lastName: NSString)
+    {
+        let userID = accessToken as NSString
+        let facebookProfileUrl = NSURL(string: "http://graph.facebook.com/\(userID)/picture?type=large")
+        
+        if let data = NSData(contentsOfURL: facebookProfileUrl!) {
+            self.profilePicture.image = UIImage(data: data)
+            self.firstName = firstName
+            self.lastName = lastName
+        }
+    }
+    
+    
+    @IBAction func facebookLogin(sender: AnyObject) {
+        
+        let fbLoginManager : FBSDKLoginManager = FBSDKLoginManager()
+        
+        fbLoginManager.logInWithReadPermissions(["email"], fromViewController: self) { (result, error) -> Void in
+            
+            if (error == nil) {
+                let fbloginresult : FBSDKLoginManagerLoginResult = result
+                
+                if(fbloginresult.grantedPermissions.contains("email"))
+                {
+                    self.getFBUserData()
+                }
+            }
+        }
+    }
+    
+    
+    func getFBUserData() {
+        
+        if((FBSDKAccessToken.currentAccessToken()) != nil) {
+            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).startWithCompletionHandler({ (connection, result, error) -> Void in
+                
+                if (error == nil) {
+                    
+                    if let id: NSString = result.valueForKey("id") as? NSString {
+                        if let firstName: NSString = result.valueForKey("first_name") as? NSString {
+                            if let lastName: NSString = result.valueForKey("last_name") as? NSString {
+                                self.returnUserInfo(id, firstName: firstName, lastName: lastName)
+                            }
+                        }
+                    }
+                }
+                
+                    self.performSegueWithIdentifier("worked", sender: self)
+                })
+            }
+    }
+    
+    
+
+    
+        
     
     //Test String array for classes
-    var items: [String] = ["ECE 158B", "COGS 185", "ENG 100D", "CSE 190", "CSE 250A"]
+   /* var items: [String] = ["ECE 158B", "COGS 185", "ENG 100D", "CSE 190", "CSE 250A"]
     
     
     //Add new class to the list
@@ -50,35 +113,35 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate, UITableViewDel
     func filterList() {
         items.sortInPlace() { $0 < $1 }
         tableView.reloadData()
-    }
+    } */
     
     
     
     //Alert function that shows pop up alerts to the user
-    func sendAlert(title: String, message: String) {
+   /* func sendAlert(title: String, message: String) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
-    }
+    } */
     
     
     
     //Brings up a popup to add your class
-    @IBAction func buttonPressed(sender: AnyObject) {
+   /* @IBAction func buttonPressed(sender: AnyObject) {
         let alert = UIAlertController(title: "Class Name", message: "Add your class", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addTextFieldWithConfigurationHandler(addTextField)
         alert.addAction(UIAlertAction(title: "Add", style: UIAlertActionStyle.Default, handler: wordEntered))
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
 
         self.presentViewController(alert, animated: true, completion: nil)
-    }
+    } */
     
     //For when the view loads originally
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Log out if previously logged in
+        /*//Log out if previously logged in
         loginButtonDidLogOut(button)
         
         self.stindr.hidden = false
@@ -96,36 +159,38 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate, UITableViewDel
         }
         
         let loginButton = FBSDKLoginButton()
-        loginButton.readPermissions = ["public_profile", "email", "user_friends"]
+        loginButton.readPermissions = ["public_profile", "email", "user_friends", "read_custom_friendlists"]
         loginButton.center = self.view.center
         loginButton.delegate = self
         self.view.addSubview(loginButton)
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.tableView.allowsSelection = true
-        filterList()
+        filterList() */
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    //Sets image to Facebook profile picture image
-    func returnUserProfileImage(accessToken: NSString)
-    {
-        let userID = accessToken as NSString
-        let facebookProfileUrl = NSURL(string: "http://graph.facebook.com/\(userID)/picture?type=large")
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if let data = NSData(contentsOfURL: facebookProfileUrl!) {
-            picture.image = UIImage(data: data)
+        if(segue.identifier == "worked") {
+            let secondController = segue.destinationViewController as! secondViewController;
+            secondController.profPic = self.profilePicture
+            secondController.firstName = firstName
+            secondController.lastName = lastName
         }
     }
     
+    
+
     //Returns Facebook first name and last name
+    
+    /*
     func returnFirstName(firstName: NSString, lastName: NSString) {
         
         self.name.text = "Welcome, \(firstName) \(lastName)!"
@@ -220,6 +285,6 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate, UITableViewDel
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
             tableView.reloadData()
         }
-    }
+    } */
 }
 
