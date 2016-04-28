@@ -176,15 +176,15 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+   /*override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if(segue.identifier == "worked") {
-            let secondController = segue.destinationViewController as! secondViewController;
+            let secondController = segue.destinationViewController
             secondController.profPic = self.profilePicture
             secondController.firstName = firstName
             secondController.lastName = lastName
         }
-    }
+    } */
     
     
 

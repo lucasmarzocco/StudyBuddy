@@ -24,6 +24,7 @@ class secondViewController: UIViewController {
     var scoreInput = 5
     var studyTitleInput = "Study Master"
     
+    @IBOutlet weak var mainPage: UITabBarItem!
     
     @IBAction func logout(sender: AnyObject) {
         let loginManager: FBSDKLoginManager = FBSDKLoginManager()
@@ -38,10 +39,10 @@ class secondViewController: UIViewController {
         
         //checkStudyScore(firstName)
         
-        profilePicture.image = profPic.image
+        //profilePicture.image = profPic.image
         let imageName = "\(scoreInput)Stars"
         studyScore.image = UIImage(named:imageName)
-        welcomeSign.text? = "Welcome \(firstName) \(lastName)!"
+        //welcomeSign.text? = "Welcome \(firstName) \(lastName)!"
         studyTitle.text? = studyTitleInput
         
     }
