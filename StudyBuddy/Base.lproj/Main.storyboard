@@ -123,7 +123,7 @@
             </objects>
             <point key="canvasLocation" x="-820" y="1044"/>
         </scene>
-        <!--Item-->
+        <!--Home-->
         <scene sceneID="Yog-jF-qVR">
             <objects>
                 <viewController id="Tlx-LE-wkZ" customClass="secondViewController" customModule="StudyBuddy" customModuleProvider="target" sceneMemberID="viewController">
@@ -177,7 +177,7 @@
                             <constraint firstItem="J6D-I1-sLK" firstAttribute="top" secondItem="Kkt-WL-m6x" secondAttribute="bottom" constant="85" id="yNH-zV-Ajt"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="gZO-uK-Ihq"/>
+                    <tabBarItem key="tabBarItem" title="Home" id="gZO-uK-Ihq"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="profilePicture" destination="J6D-I1-sLK" id="WDz-aC-lMQ"/>
@@ -190,7 +190,7 @@
             </objects>
             <point key="canvasLocation" x="-235" y="1759"/>
         </scene>
-        <!--Item-->
+        <!--Groups-->
         <scene sceneID="OeA-Cx-GXG">
             <objects>
                 <tableViewController id="lCo-A6-5i7" sceneMemberID="viewController">
@@ -213,13 +213,13 @@
                             <outlet property="delegate" destination="lCo-A6-5i7" id="6iM-rn-DO5"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="1YT-3h-1bx"/>
+                    <tabBarItem key="tabBarItem" title="Groups" id="1YT-3h-1bx"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oq5-DQ-l9C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="265" y="1759"/>
         </scene>
-        <!--Item-->
+        <!--Notifications-->
         <scene sceneID="5Xg-5E-KGw">
             <objects>
                 <tableViewController id="4Ia-If-D0A" sceneMemberID="viewController">
@@ -242,7 +242,7 @@
                             <outlet property="delegate" destination="4Ia-If-D0A" id="Y4l-Pm-lOk"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="cOH-Mf-E8b"/>
+                    <tabBarItem key="tabBarItem" title="Notifications" id="cOH-Mf-E8b"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MTO-wi-k35" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
