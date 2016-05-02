@@ -19,12 +19,12 @@
 		01839F311CB20C7C00BDD110 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01839F2F1CB20C7C00BDD110 /* FBSDKCoreKit.framework */; };
 		01839F321CB20C7C00BDD110 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01839F301CB20C7C00BDD110 /* FBSDKLoginKit.framework */; };
 		01CAD4EF1CD01C6100620229 /* secondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CAD4EE1CD01C6100620229 /* secondViewController.swift */; };
-		3D3E91461CD705280053E104 /* GamePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E91401CD705280053E104 /* GamePickerViewController.swift */; };
-		3D3E91471CD705280053E104 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E91411CD705280053E104 /* Player.swift */; };
-		3D3E91481CD705280053E104 /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E91421CD705280053E104 /* PlayerCell.swift */; };
-		3D3E91491CD705280053E104 /* PlayerDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E91431CD705280053E104 /* PlayerDetailsViewController.swift */; };
-		3D3E914A1CD705280053E104 /* PlayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E91441CD705280053E104 /* PlayersViewController.swift */; };
-		3D3E914B1CD705280053E104 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E91451CD705280053E104 /* SampleData.swift */; };
+		3D7404CA1CD7103A00C83987 /* GamePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7404C41CD7103A00C83987 /* GamePickerViewController.swift */; };
+		3D7404CB1CD7103A00C83987 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7404C51CD7103A00C83987 /* Player.swift */; };
+		3D7404CC1CD7103A00C83987 /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7404C61CD7103A00C83987 /* PlayerCell.swift */; };
+		3D7404CD1CD7103A00C83987 /* PlayerDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7404C71CD7103A00C83987 /* PlayerDetailsViewController.swift */; };
+		3D7404CE1CD7103A00C83987 /* PlayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7404C81CD7103A00C83987 /* PlayersViewController.swift */; };
+		3D7404CF1CD7103A00C83987 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D7404C91CD7103A00C83987 /* SampleData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,12 +63,12 @@
 		01839F2F1CB20C7C00BDD110 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		01839F301CB20C7C00BDD110 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		01CAD4EE1CD01C6100620229 /* secondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = secondViewController.swift; sourceTree = "<group>"; };
-		3D3E91401CD705280053E104 /* GamePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GamePickerViewController.swift; path = ../../../../Downloads/Ratings/Ratings/GamePickerViewController.swift; sourceTree = "<group>"; };
-		3D3E91411CD705280053E104 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Player.swift; path = ../../../../Downloads/Ratings/Ratings/Player.swift; sourceTree = "<group>"; };
-		3D3E91421CD705280053E104 /* PlayerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerCell.swift; path = ../../../../Downloads/Ratings/Ratings/PlayerCell.swift; sourceTree = "<group>"; };
-		3D3E91431CD705280053E104 /* PlayerDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayerDetailsViewController.swift; path = ../../../../Downloads/Ratings/Ratings/PlayerDetailsViewController.swift; sourceTree = "<group>"; };
-		3D3E91441CD705280053E104 /* PlayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayersViewController.swift; path = ../../../../Downloads/Ratings/Ratings/PlayersViewController.swift; sourceTree = "<group>"; };
-		3D3E91451CD705280053E104 /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SampleData.swift; path = ../../../../Downloads/Ratings/Ratings/SampleData.swift; sourceTree = "<group>"; };
+		3D7404C41CD7103A00C83987 /* GamePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamePickerViewController.swift; sourceTree = "<group>"; };
+		3D7404C51CD7103A00C83987 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		3D7404C61CD7103A00C83987 /* PlayerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
+		3D7404C71CD7103A00C83987 /* PlayerDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerDetailsViewController.swift; sourceTree = "<group>"; };
+		3D7404C81CD7103A00C83987 /* PlayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayersViewController.swift; sourceTree = "<group>"; };
+		3D7404C91CD7103A00C83987 /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,12 +129,12 @@
 				01839F011CB208A800BDD110 /* Main.storyboard */,
 				017193751CD6C3D000A59CA5 /* FriendProfileViewController.swift */,
 				017193731CD6BA3700A59CA5 /* ClassmatesViewController.swift */,
-				3D3E91401CD705280053E104 /* GamePickerViewController.swift */,
-				3D3E91411CD705280053E104 /* Player.swift */,
-				3D3E91421CD705280053E104 /* PlayerCell.swift */,
-				3D3E91431CD705280053E104 /* PlayerDetailsViewController.swift */,
-				3D3E91441CD705280053E104 /* PlayersViewController.swift */,
-				3D3E91451CD705280053E104 /* SampleData.swift */,
+				3D7404C41CD7103A00C83987 /* GamePickerViewController.swift */,
+				3D7404C51CD7103A00C83987 /* Player.swift */,
+				3D7404C61CD7103A00C83987 /* PlayerCell.swift */,
+				3D7404C71CD7103A00C83987 /* PlayerDetailsViewController.swift */,
+				3D7404C81CD7103A00C83987 /* PlayersViewController.swift */,
+				3D7404C91CD7103A00C83987 /* SampleData.swift */,
 				01839F041CB208A800BDD110 /* Assets.xcassets */,
 				01839F061CB208A800BDD110 /* LaunchScreen.storyboard */,
 				01839F091CB208A800BDD110 /* Info.plist */,
@@ -292,17 +292,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D3E91481CD705280053E104 /* PlayerCell.swift in Sources */,
 				017193761CD6C3D000A59CA5 /* FriendProfileViewController.swift in Sources */,
+				3D7404CC1CD7103A00C83987 /* PlayerCell.swift in Sources */,
 				01839F001CB208A800BDD110 /* ViewController.swift in Sources */,
-				3D3E914A1CD705280053E104 /* PlayersViewController.swift in Sources */,
-				3D3E91461CD705280053E104 /* GamePickerViewController.swift in Sources */,
+				3D7404CE1CD7103A00C83987 /* PlayersViewController.swift in Sources */,
+				3D7404CB1CD7103A00C83987 /* Player.swift in Sources */,
 				01CAD4EF1CD01C6100620229 /* secondViewController.swift in Sources */,
-				3D3E91491CD705280053E104 /* PlayerDetailsViewController.swift in Sources */,
-				3D3E91471CD705280053E104 /* Player.swift in Sources */,
-				3D3E914B1CD705280053E104 /* SampleData.swift in Sources */,
+				3D7404CF1CD7103A00C83987 /* SampleData.swift in Sources */,
+				3D7404CA1CD7103A00C83987 /* GamePickerViewController.swift in Sources */,
 				017193741CD6BA3700A59CA5 /* ClassmatesViewController.swift in Sources */,
 				01839EFE1CB208A800BDD110 /* AppDelegate.swift in Sources */,
+				3D7404CD1CD7103A00C83987 /* PlayerDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
