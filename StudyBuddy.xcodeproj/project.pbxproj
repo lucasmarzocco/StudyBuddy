@@ -228,7 +228,7 @@
 				TargetAttributes = {
 					01839EF91CB208A800BDD110 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 25GDV2Q4B6;
+						DevelopmentTeam = 94MY6V4MNR;
 					};
 					01839F0D1CB208A800BDD110 = {
 						CreatedOnToolsVersion = 7.3;
@@ -452,9 +452,10 @@
 				);
 				INFOPLIST_FILE = StudyBuddy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lucasmarzocco.StudyBuddy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.quanwilliam.StudyBuddy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -470,9 +471,10 @@
 				);
 				INFOPLIST_FILE = StudyBuddy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lucasmarzocco.StudyBuddy;
+				PRODUCT_BUNDLE_IDENTIFIER = com.quanwilliam.StudyBuddy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
