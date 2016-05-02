@@ -35,7 +35,7 @@ class ViewController: UIViewController {
         
         let fbLoginManager : FBSDKLoginManager = FBSDKLoginManager()
         
-        fbLoginManager.logInWithReadPermissions(["email"], fromViewController: self) { (result, error) -> Void in
+        fbLoginManager.logInWithReadPermissions(["email", "user_friends"], fromViewController: self) { (result, error) -> Void in
             
             if (error == nil) {
                 let fbloginresult : FBSDKLoginManagerLoginResult = result
@@ -52,7 +52,7 @@ class ViewController: UIViewController {
     func getFBUserData() {
         
         if((FBSDKAccessToken.currentAccessToken()) != nil) {
-            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).startWithCompletionHandler({ (connection, result, error) -> Void in
+            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, user_friends, name, first_name, last_name, picture.type(large), email"]).startWithCompletionHandler({ (connection, result, error) -> Void in
                 
                 if (error == nil) {
                     
