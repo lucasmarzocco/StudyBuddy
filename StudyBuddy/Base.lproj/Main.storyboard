@@ -3,8 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -217,7 +215,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nPW-69-ZWz" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="v62-4d-b5K" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-234" y="4472"/>
+            <point key="canvasLocation" x="-234" y="4080"/>
         </scene>
         <!--Friend Profile View Controller-->
         <scene sceneID="8I7-K2-riO">
@@ -243,7 +241,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fny-qg-Ggx">
                                 <rect key="frame" x="87" y="306" width="240" height="45"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ls4-BP-Thd">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ls4-BP-Thd">
                                 <rect key="frame" x="87" y="439" width="80" height="73"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -254,18 +252,8 @@
                                     <action selector="letsStudy:" destination="wOY-Yv-5mi" eventType="touchUpInside" id="2EP-g0-tfZ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ACd-rR-QfX">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iZz-q6-8MX">
                                 <rect key="frame" x="247" y="439" width="80" height="73"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="ydK-GE-9P3"/>
-                                </constraints>
-                                <state key="normal" title="Group with"/>
-                                <connections>
-                                    <action selector="groupWith:" destination="wOY-Yv-5mi" eventType="touchUpInside" id="iRR-7z-f3V"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iZz-q6-8MX">
-                                <rect key="frame" x="167" y="439" width="80" height="73"/>
                                 <state key="normal" title="Rate"/>
                                 <connections>
                                     <action selector="rate:" destination="wOY-Yv-5mi" eventType="touchUpInside" id="gp0-Kj-0Tw"/>
@@ -275,27 +263,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="fny-qg-Ggx" firstAttribute="leading" secondItem="UST-lB-zN8" secondAttribute="leading" id="0I2-YQ-NYX"/>
-                            <constraint firstItem="ACd-rR-QfX" firstAttribute="leading" secondItem="iZz-q6-8MX" secondAttribute="trailing" id="6Bj-ff-Ukn"/>
                             <constraint firstItem="c5z-jj-odN" firstAttribute="top" secondItem="2Vn-o2-Dy7" secondAttribute="bottom" constant="181" id="6gH-X6-YdJ"/>
-                            <constraint firstItem="ACd-rR-QfX" firstAttribute="top" secondItem="fny-qg-Ggx" secondAttribute="bottom" constant="88" id="7h0-2e-cZ8"/>
                             <constraint firstItem="c5z-jj-odN" firstAttribute="leading" secondItem="XBa-pl-ez9" secondAttribute="leadingMargin" constant="61" id="8nt-VT-Yej"/>
                             <constraint firstItem="fny-qg-Ggx" firstAttribute="centerX" secondItem="c5z-jj-odN" secondAttribute="centerX" id="AO2-wG-VXx"/>
                             <constraint firstItem="c5z-jj-odN" firstAttribute="centerX" secondItem="XBa-pl-ez9" secondAttribute="centerX" id="CwZ-ML-9NZ"/>
                             <constraint firstItem="vcO-nr-TKf" firstAttribute="top" secondItem="fny-qg-Ggx" secondAttribute="bottom" constant="336" id="F5i-YT-bci"/>
-                            <constraint firstItem="ACd-rR-QfX" firstAttribute="trailing" secondItem="fny-qg-Ggx" secondAttribute="trailing" id="InQ-Yh-3Qv"/>
                             <constraint firstItem="ls4-BP-Thd" firstAttribute="leading" secondItem="fny-qg-Ggx" secondAttribute="leading" id="K2t-Cj-HYX"/>
                             <constraint firstItem="fny-qg-Ggx" firstAttribute="top" secondItem="c5z-jj-odN" secondAttribute="bottom" constant="8" symbolic="YES" id="N9J-kC-oEv"/>
-                            <constraint firstItem="ACd-rR-QfX" firstAttribute="baseline" secondItem="iZz-q6-8MX" secondAttribute="firstBaseline" id="SWm-vx-tha"/>
-                            <constraint firstItem="ACd-rR-QfX" firstAttribute="baseline" secondItem="ls4-BP-Thd" secondAttribute="baseline" id="aC4-jz-Hj8"/>
-                            <constraint firstItem="ACd-rR-QfX" firstAttribute="top" secondItem="ls4-BP-Thd" secondAttribute="top" id="dKQ-93-ovr"/>
-                            <constraint firstItem="ACd-rR-QfX" firstAttribute="baseline" secondItem="ls4-BP-Thd" secondAttribute="firstBaseline" id="h4g-AF-6b7"/>
                             <constraint firstItem="vcO-nr-TKf" firstAttribute="top" secondItem="c5z-jj-odN" secondAttribute="bottom" constant="389" id="jNr-gZ-zTE"/>
-                            <constraint firstItem="ACd-rR-QfX" firstAttribute="top" secondItem="iZz-q6-8MX" secondAttribute="top" id="jVj-hM-nlx"/>
-                            <constraint firstItem="iZz-q6-8MX" firstAttribute="leading" secondItem="ls4-BP-Thd" secondAttribute="trailing" id="kEu-DI-ltf"/>
+                            <constraint firstItem="iZz-q6-8MX" firstAttribute="leading" secondItem="ls4-BP-Thd" secondAttribute="trailing" constant="80" id="kEu-DI-ltf"/>
                             <constraint firstItem="fny-qg-Ggx" firstAttribute="leading" secondItem="XBa-pl-ez9" secondAttribute="leadingMargin" constant="67" id="ndG-JU-bUE"/>
-                            <constraint firstItem="ACd-rR-QfX" firstAttribute="firstBaseline" secondItem="iZz-q6-8MX" secondAttribute="baseline" id="qhI-JG-dj8"/>
                             <constraint firstItem="fny-qg-Ggx" firstAttribute="trailing" secondItem="UST-lB-zN8" secondAttribute="trailing" id="rdd-Pb-AJm"/>
-                            <constraint firstItem="vcO-nr-TKf" firstAttribute="top" secondItem="ACd-rR-QfX" secondAttribute="bottom" constant="175" id="vaF-Qr-yc1"/>
                         </constraints>
                     </view>
                     <connections>
@@ -304,7 +282,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hVw-rm-moD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-234" y="5423"/>
+            <point key="canvasLocation" x="-234" y="4975"/>
         </scene>
         <!--Notifications-->
         <scene sceneID="5Xg-5E-KGw">
