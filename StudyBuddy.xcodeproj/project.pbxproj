@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		017193741CD6BA3700A59CA5 /* ClassmatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017193731CD6BA3700A59CA5 /* ClassmatesViewController.swift */; };
+		017193761CD6C3D000A59CA5 /* FriendProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017193751CD6C3D000A59CA5 /* FriendProfileViewController.swift */; };
 		01839EFE1CB208A800BDD110 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01839EFD1CB208A800BDD110 /* AppDelegate.swift */; };
 		01839F001CB208A800BDD110 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01839EFF1CB208A800BDD110 /* ViewController.swift */; };
 		01839F031CB208A800BDD110 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01839F011CB208A800BDD110 /* Main.storyboard */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		017193731CD6BA3700A59CA5 /* ClassmatesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassmatesViewController.swift; sourceTree = "<group>"; };
+		017193751CD6C3D000A59CA5 /* FriendProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendProfileViewController.swift; sourceTree = "<group>"; };
 		01839EFA1CB208A800BDD110 /* StudyBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01839EFD1CB208A800BDD110 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01839EFF1CB208A800BDD110 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +115,8 @@
 				01839EFF1CB208A800BDD110 /* ViewController.swift */,
 				01CAD4EE1CD01C6100620229 /* secondViewController.swift */,
 				01839F011CB208A800BDD110 /* Main.storyboard */,
+				017193751CD6C3D000A59CA5 /* FriendProfileViewController.swift */,
+				017193731CD6BA3700A59CA5 /* ClassmatesViewController.swift */,
 				01839F041CB208A800BDD110 /* Assets.xcassets */,
 				01839F061CB208A800BDD110 /* LaunchScreen.storyboard */,
 				01839F091CB208A800BDD110 /* Info.plist */,
@@ -268,8 +274,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				017193761CD6C3D000A59CA5 /* FriendProfileViewController.swift in Sources */,
 				01839F001CB208A800BDD110 /* ViewController.swift in Sources */,
 				01CAD4EF1CD01C6100620229 /* secondViewController.swift in Sources */,
+				017193741CD6BA3700A59CA5 /* ClassmatesViewController.swift in Sources */,
 				01839EFE1CB208A800BDD110 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

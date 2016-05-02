@@ -25,22 +25,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "StudyBuddy/ViewController.swift"
-            timestampString = "483409665.293368"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "207"
-            endingLineNumber = "207"
-            landmarkName = "ViewController"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "StudyBuddy/AppDelegate.swift"
             timestampString = "481501130.000579"
             startingColumnNumber = "9223372036854775807"
@@ -105,11 +89,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StudyBuddy/ViewController.swift"
-            timestampString = "483409178.339029"
+            timestampString = "483837190.825123"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
             landmarkName = "returnUserInfo(_:firstName:lastName:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -121,12 +105,184 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StudyBuddy/secondViewController.swift"
-            timestampString = "483496335.22054"
+            timestampString = "483840790.653754"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "44"
             endingLineNumber = "44"
             landmarkName = "viewDidLoad()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StudyBuddy/secondViewController.swift"
+            timestampString = "483837190.825123"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "secondViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "StudyBuddy.secondViewController.mainPage.getter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UITabBarItem&gt;"
+                  moduleName = "StudyBuddy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lucasmarzocco/Desktop/StudyBuddy/StudyBuddy/secondViewController.swift"
+                  timestampString = "483588491.980375"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "40">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "StudyBuddy.secondViewController.mainPage.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UITabBarItem&gt;"
+                  moduleName = "StudyBuddy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lucasmarzocco/Desktop/StudyBuddy/StudyBuddy/secondViewController.swift"
+                  timestampString = "483588491.980579"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "StudyBuddy.secondViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.NSBundle&gt;) -&gt; StudyBuddy.secondViewController"
+                  moduleName = "StudyBuddy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lucasmarzocco/Desktop/StudyBuddy/StudyBuddy/secondViewController.swift"
+                  timestampString = "483588491.980684"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "496">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "StudyBuddy.secondViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;StudyBuddy.secondViewController&gt;"
+                  moduleName = "StudyBuddy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lucasmarzocco/Desktop/StudyBuddy/StudyBuddy/secondViewController.swift"
+                  timestampString = "483588491.980784"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "432">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StudyBuddy/ClassmatesViewController.swift"
+            timestampString = "483835425.000075"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "ClassmatesViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "StudyBuddy.ClassmatesViewController.__deallocating_deinit"
+                  moduleName = "StudyBuddy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lucasmarzocco/Desktop/StudyBuddy/StudyBuddy/ClassmatesViewController.swift"
+                  timestampString = "483835310.587392"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "StudyBuddy.ClassmatesViewController.init (style : __C.UITableViewStyle) -&gt; StudyBuddy.ClassmatesViewController"
+                  moduleName = "StudyBuddy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lucasmarzocco/Desktop/StudyBuddy/StudyBuddy/ClassmatesViewController.swift"
+                  timestampString = "483835310.587691"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "84">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "StudyBuddy.ClassmatesViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.NSBundle&gt;) -&gt; StudyBuddy.ClassmatesViewController"
+                  moduleName = "StudyBuddy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lucasmarzocco/Desktop/StudyBuddy/StudyBuddy/ClassmatesViewController.swift"
+                  timestampString = "483835310.587867"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "124">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "StudyBuddy.ClassmatesViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;StudyBuddy.ClassmatesViewController&gt;"
+                  moduleName = "StudyBuddy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lucasmarzocco/Desktop/StudyBuddy/StudyBuddy/ClassmatesViewController.swift"
+                  timestampString = "483835310.588019"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "132">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StudyBuddy/ClassmatesViewController.swift"
+            timestampString = "483841516.880465"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "tableView(_:didSelectRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
