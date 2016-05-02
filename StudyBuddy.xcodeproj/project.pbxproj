@@ -294,6 +294,7 @@
 			files = (
 				01D41F1B1CD70F54007B84C5 /* GamePickerViewController.swift in Sources */,
 				017193761CD6C3D000A59CA5 /* FriendProfileViewController.swift in Sources */,
+				3D7404CC1CD7103A00C83987 /* PlayerCell.swift in Sources */,
 				01839F001CB208A800BDD110 /* ViewController.swift in Sources */,
 				01D41F171CD70F26007B84C5 /* PlayerDetailsViewController.swift in Sources */,
 				01D41F191CD70F26007B84C5 /* SampleData.swift in Sources */,
