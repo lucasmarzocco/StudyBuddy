@@ -25,6 +25,7 @@
 		01D41F251CD711F4007B84C5 /* PlayerDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D41F1F1CD711F4007B84C5 /* PlayerDetailsViewController.swift */; };
 		01D41F261CD711F4007B84C5 /* PlayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D41F201CD711F4007B84C5 /* PlayersViewController.swift */; };
 		01D41F271CD711F4007B84C5 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D41F211CD711F4007B84C5 /* SampleData.swift */; };
+		F1DB848B1CD811C10048E561 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DB848A1CD811C10048E561 /* NotificationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		01D41F1F1CD711F4007B84C5 /* PlayerDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerDetailsViewController.swift; sourceTree = "<group>"; };
 		01D41F201CD711F4007B84C5 /* PlayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayersViewController.swift; sourceTree = "<group>"; };
 		01D41F211CD711F4007B84C5 /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
+		F1DB848A1CD811C10048E561 /* NotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 				01D41F1E1CD711F4007B84C5 /* PlayerCell.swift */,
 				01D41F1F1CD711F4007B84C5 /* PlayerDetailsViewController.swift */,
 				01D41F201CD711F4007B84C5 /* PlayersViewController.swift */,
+				F1DB848A1CD811C10048E561 /* NotificationViewController.swift */,
 				01D41F211CD711F4007B84C5 /* SampleData.swift */,
 				01839EFD1CB208A800BDD110 /* AppDelegate.swift */,
 				01839EFF1CB208A800BDD110 /* ViewController.swift */,
@@ -294,6 +297,7 @@
 			files = (
 				01D41F241CD711F4007B84C5 /* PlayerCell.swift in Sources */,
 				017193761CD6C3D000A59CA5 /* FriendProfileViewController.swift in Sources */,
+				F1DB848B1CD811C10048E561 /* NotificationViewController.swift in Sources */,
 				01839F001CB208A800BDD110 /* ViewController.swift in Sources */,
 				01D41F261CD711F4007B84C5 /* PlayersViewController.swift in Sources */,
 				01D41F221CD711F4007B84C5 /* GamePickerViewController.swift in Sources */,
