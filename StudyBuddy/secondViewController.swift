@@ -9,6 +9,7 @@
 import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
+import Firebase
 
 
 class secondViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -24,10 +25,12 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var profPic: UIImageView!
     var firstName: NSString!
     var lastName: NSString!
-    var scoreInput = 5
-    var studyTitleInput = "Study Master"
+    let ref = Firebase(url: "https://incandescent-heat-2456.firebaseio.com/Users")
+    var passedRef: String!
+    var passedID: Int!
+    var firstEntry = true
     
-    var items: [String] = ["ECE158B", "COGS185", "ENG100D", "CSE190"]
+    var items: [String] = [""]
     
     @IBAction func addClass(sender: AnyObject) {
         
@@ -40,13 +43,49 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let imageName = "\(scoreInput)Stars"
-        studyScore.image = UIImage(named:imageName)
-        studyTitle.text? = studyTitleInput
+        
+        ref.observeEventType(.Value, withBlock: { snapshot in
+            
+            for stuff in snapshot.children {
+                
+                var newItems: [String] = []
+                
+                let id = stuff.value.objectForKey("id")?.integerValue
+                
+                print("ID: " + String(id))
+                print("PASSED ID: " + String(self.passedID))
+                
+                if(id == self.passedID) {
+                    print("found it!")
+                    
+                    self.firstEntry = stuff.value.objectForKey("classBoolean") as! Bool
+                    self.firstName = stuff.value.objectForKey("firstName") as! String
+                    self.lastName = stuff.value.objectForKey("lastName") as! String
+                    self.welcomeSign.text = "\(self.firstName) \(self.lastName)"
+                    let scoreInput = stuff.value.objectForKey("studyScore") as! Int
+                    let imageName = "\(scoreInput)Stars"
+                    self.studyScore.image = UIImage(named:imageName)
+                    let studyTitleInput = stuff.value.objectForKey("studyTitle")
+                    self.studyTitle.text? = studyTitleInput as! String
+                    
+                    for item in stuff.value.objectForKey("currentClasses") as! [String] {
+                        newItems.append(item)
+                        print("adding!")
+                    }
+                    
+                    self.items = newItems
+                    self.tableView.reloadData()
+                    self.passedRef = stuff.value.objectForKey("ref") as! String
+                }
+            }
+            
+            }, withCancelBlock: { error in
+                print("An error has occurred")
+        })
+        
+
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.allowsSelection = true
-        filterList()
-        tableView.reloadData()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -59,12 +98,16 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     //# of rows in UITableView
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        if(items[0] == "") {
+            return 0
+        }
+        else {
+            return items.count
+        }
     }
     
     //Populates UITableView with cells from items array
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
         cell.textLabel?.text = items[indexPath.item]
         return cell
@@ -85,17 +128,28 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     //Swipe to delete functionality
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            items.removeAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            
+            let newString = "/" + (self.firstName as String) + " " + (self.lastName as String) + "/classBoolean"
+            let new = passedRef + newString
+            var changeClass = Firebase(url: new)
+            
+            if(items.count == 1) {
+                items[0] = ""
+                changeClass.setValue(true)
+            }
+            else {
+                items.removeAtIndex(indexPath.row)
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            }
+
+            let newString1 = "/" + (self.firstName as String) + " " + (self.lastName as String) + "/currentClasses"
+            let new1 = passedRef + newString1
+            changeClass = Firebase(url: new1)
+            changeClass.setValue(items)
             tableView.reloadData()
         }
     }
     
-    //Sorts class list
-    func filterList() {
-        items.sortInPlace() { $0 < $1 }
-        tableView.reloadData()
-    }
     
     //Alert function that shows pop up alerts to the user
      func sendAlert(title: String, message: String) {
@@ -113,8 +167,24 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
             sendAlert("Duplicate Entry", message: "Class already has been added!")
         }
         else {
-            items.append(self.wordField!.text!.uppercaseString)
-            filterList()
+            
+            let newString = "/" + (self.firstName as String) + " " + (self.lastName as String) + "/classBoolean"
+            let new = passedRef + newString
+            let changeClass = Firebase(url: new)
+            
+            if(self.firstEntry) {
+                items[0] = self.wordField!.text!.uppercaseString
+                changeClass.setValue(false)
+            }
+            else {
+                items.append(self.wordField!.text!.uppercaseString)
+            }
+
+            let newString1 = "/" + (self.firstName as String) + " " + (self.lastName as String) + "/currentClasses"
+            let new1 = passedRef + newString1
+            let changeClass1 = Firebase(url: new1)
+            changeClass1.setValue(items)
+            tableView.reloadData()
         }
     }
     
