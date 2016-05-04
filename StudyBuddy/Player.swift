@@ -1,6 +1,3 @@
-
-
-
 import UIKit
 
 struct Player {

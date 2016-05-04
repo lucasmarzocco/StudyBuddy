@@ -27,7 +27,7 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var lastName: NSString!
     let ref = Firebase(url: "https://incandescent-heat-2456.firebaseio.com/Users")
     var passedRef: String!
-    var passedID: Int!
+    var passedID: NSString!
     var firstEntry = true
     
     var items: [String] = [""]
@@ -50,9 +50,9 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 
                 var newItems: [String] = []
                 
-                let id = stuff.value.objectForKey("id")?.integerValue
-                
-                print("ID: " + String(id))
+                let id = stuff.value.objectForKey("id") as! NSString
+            
+                print("ID: " + (id as String))
                 print("PASSED ID: " + String(self.passedID))
                 
                 if(id == self.passedID) {

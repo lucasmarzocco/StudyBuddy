@@ -1,5 +1,3 @@
-
-
 import UIKit
 
 class PlayerCell: UITableViewCell {
@@ -13,7 +11,4 @@ class PlayerCell: UITableViewCell {
       nameLabel.text = player.name
     }
   }
-
-  
-  
 }

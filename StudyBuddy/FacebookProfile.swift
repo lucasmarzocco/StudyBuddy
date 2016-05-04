@@ -19,11 +19,11 @@ struct FacebookProfile {
     var currentClasses: [String]
     var profilePic: String!
     var ref: String!
-    var id: Int!
+    var id: NSString!
     var classBoolean: Bool!
     
     
-    init(firstName: String!, lastName: String!, studyScore: Int!, studyTitle: String!, currentGroups: [String], currentClasses: [String], profilePic: String!, ref: String!, id: Int!, classBoolean: Bool!) {
+    init(firstName: String!, lastName: String!, studyScore: Int!, studyTitle: String!, currentGroups: [String], currentClasses: [String], profilePic: String!, ref: String!, id: NSString!, classBoolean: Bool!) {
         
         self.firstName = firstName
         self.lastName = lastName

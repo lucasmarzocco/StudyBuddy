@@ -19,9 +19,7 @@ class ViewController: UIViewController {
     var lastName: String!
     var currentProfiles = [String]()
     let ref = Firebase(url: "https://incandescent-heat-2456.firebaseio.com/Users")
-    static var counter = 0
-    var id: Int!
-
+    var facebookID: NSString!
     
     //Sets image to Facebook profile picture image
     func returnUserInfo(accessToken: NSString, firstName: String, lastName: String)
@@ -38,16 +36,12 @@ class ViewController: UIViewController {
             let classes: [String] = [""]
             
             if(!currentProfiles.contains(firstName + lastName)) {
-                self.id = ViewController.counter
-                print("PRINTINGGGGGGGG: " + String(self.id))
 
                 print("New shit added!!!")
-                let newProfile = FacebookProfile(firstName: self.firstName, lastName: self.lastName, studyScore: 1, studyTitle: "Beginner", currentGroups: groups, currentClasses: classes, profilePic: facebookProfileUrl?.absoluteString, ref: self.ref.description, id: id, classBoolean: true)
+                let newProfile = FacebookProfile(firstName: self.firstName, lastName: self.lastName, studyScore: 1, studyTitle: "Beginner", currentGroups: groups, currentClasses: classes, profilePic: facebookProfileUrl?.absoluteString, ref: self.ref.description, id: facebookID, classBoolean: true)
             
                 let profileRef = self.ref.childByAppendingPath(firstName + " " + lastName)
                 profileRef.setValue(newProfile.toAnyObject())
-                ViewController.counter = ViewController.counter + 1
-                print("COUNTER FUCKING INCREASINNGGGGGGG!!!!!!!!!!!!!!!!!!!!!!!!")
             }
         }
     }
@@ -76,19 +70,22 @@ class ViewController: UIViewController {
             FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).startWithCompletionHandler({ (connection, result, error) -> Void in
                 
                 if (error == nil) {
-                    
                     if let id: NSString = result.valueForKey("id") as? NSString {
                         if let firstName: NSString = result.valueForKey("first_name") as? NSString {
                             if let lastName: NSString = result.valueForKey("last_name") as? NSString {
+                                self.storeID(id)
                                 self.returnUserInfo(id, firstName: firstName as String, lastName: lastName as String)
                                 self.performSegueWithIdentifier("worked", sender: self)
                             }
                         }
                     }
                 }
-
               })
             }
+    }
+    
+    func storeID(id: NSString) {
+        self.facebookID = id
     }
     
     @IBAction func logout(sender: AnyObject) {
@@ -135,7 +132,7 @@ class ViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "worked") {
             let dest = segue.destinationViewController.childViewControllers[0] as! secondViewController
-            dest.passedID = self.id
+            dest.passedID = self.facebookID
         }
     }
 }

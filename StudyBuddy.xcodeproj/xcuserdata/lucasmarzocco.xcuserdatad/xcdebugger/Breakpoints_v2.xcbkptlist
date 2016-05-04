@@ -89,11 +89,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StudyBuddy/ViewController.swift"
-            timestampString = "483938511.193968"
+            timestampString = "484090230.59703"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
             landmarkName = "returnUserInfo(_:firstName:lastName:)"
             landmarkType = "5">
          </BreakpointContent>
