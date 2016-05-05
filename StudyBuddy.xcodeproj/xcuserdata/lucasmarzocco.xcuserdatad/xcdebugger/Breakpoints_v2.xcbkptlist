@@ -105,11 +105,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StudyBuddy/secondViewController.swift"
-            timestampString = "483942472.123309"
+            timestampString = "484109648.284106"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "secondViewController"
             landmarkType = "3">
             <Locations>

@@ -14,6 +14,11 @@ import Firebase
 
 class secondViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    
+    let ref = Firebase(url: "https://incandescent-heat-2456.firebaseio.com/Users")
+    let classRef = Firebase(url: "https://incandescent-heat-2456.firebaseio.com/Classes")
+    let mainRef = Firebase(url: "https://incandescent-heat-2456.firebaseio.com")
+    
     @IBOutlet weak var welcomeSign: UILabel!
     @IBOutlet weak var studyScore: UIImageView!
     @IBOutlet weak var studyTitle: UILabel!
@@ -25,12 +30,11 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var profPic: UIImageView!
     var firstName: NSString!
     var lastName: NSString!
-    let ref = Firebase(url: "https://incandescent-heat-2456.firebaseio.com/Users")
     var passedRef: String!
     var passedID: NSString!
     var firstEntry = true
-    
     var items: [String] = [""]
+    var classes: [String] = []
     
     @IBAction func addClass(sender: AnyObject) {
         
@@ -78,7 +82,6 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         //classes
         for item in stuff.value.objectForKey("currentClasses") as! [String] {
             newItems.append(item)
-            print("adding!")
         }
         
         self.items = newItems
@@ -104,7 +107,14 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 print("An error has occurred")
         })
         
-
+        classRef.observeEventType(.Value, withBlock: { snapshot in
+            
+            //figure out classes stuff here!
+            
+            }, withCancelBlock: { error in
+                print("An error has occurred")
+        })
+        
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.allowsSelection = true
     }
@@ -183,8 +193,14 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func wordEntered(alert: UIAlertAction!) {
         
         //Adds the string in uppercase format, no matter what user inputs
-        if items.contains(self.wordField!.text!.uppercaseString) {
-            sendAlert("Duplicate Entry", message: "Class already has been added!")
+        if wordField!.text == "" {
+            sendAlert("ERROR", message: "Class field can't be empty!")
+        }
+        else if items.contains(self.wordField!.text!.uppercaseString) {
+            sendAlert("Duplicate Entry", message: "Class already has been added!") 
+        }
+        else if wordField!.text!.containsString(" ") || wordField!.text!.containsString("-") {
+            sendAlert("ERROR", message: "Class field cannot have a dash or space!")
         }
         else {
             
@@ -204,6 +220,8 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let new1 = passedRef + newString1
             let changeClass1 = Firebase(url: new1)
             changeClass1.setValue(items)
+            classes.append(self.wordField!.text!.uppercaseString)
+            classRef.setValue(classes)
             tableView.reloadData()
         }
     }
