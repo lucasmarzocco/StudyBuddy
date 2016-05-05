@@ -49,7 +49,7 @@ class ViewController: UIViewController {
     @IBAction func facebookLogin(sender: AnyObject) {
         
         let fbLoginManager : FBSDKLoginManager = FBSDKLoginManager()
-        
+
         fbLoginManager.logInWithReadPermissions(["email"], fromViewController: self) { (result, error) -> Void in
             
             if (error == nil) {
@@ -99,6 +99,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        logout(self)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -130,9 +131,16 @@ class ViewController: UIViewController {
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    
         if(segue.identifier == "worked") {
-            let dest = segue.destinationViewController.childViewControllers[0] as! secondViewController
-            dest.passedID = self.facebookID
+            
+            let dest = segue.destinationViewController.childViewControllers
+            let bob = dest[0].childViewControllers[0] as! secondViewController
+            
+            if(bob.passedID == nil) {
+                print ("ID is null for now")
+            }
+            bob.passedID = self.facebookID
         }
     }
 }

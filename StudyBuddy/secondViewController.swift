@@ -14,13 +14,13 @@ import Firebase
 
 class secondViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var welcomeSign: UILabel!
     @IBOutlet weak var studyScore: UIImageView!
     @IBOutlet weak var studyTitle: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet var wordField: UITextField?
     @IBOutlet weak var mainPage: UITabBarItem!
+    @IBOutlet weak var profilePicture: UIImageView!
     
     var profPic: UIImageView!
     var firstName: NSString!
@@ -41,6 +41,50 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
+    func setAllUserData(stuff: FDataSnapshot) {
+        
+        var newItems: [String] = []
+        
+        //First class added or not
+        self.firstEntry = stuff.value.objectForKey("classBoolean") as! Bool
+        
+        //First name
+        self.firstName = stuff.value.objectForKey("firstName") as! String
+        
+        //Last name
+        self.lastName = stuff.value.objectForKey("lastName") as! String
+        
+        //Reference to firebase
+        self.passedRef = stuff.value.objectForKey("ref") as! String
+        
+        //Welcome sign for profile
+        self.welcomeSign.text = "\(self.firstName) \(self.lastName)"
+        
+        //Study score and pic
+        let scoreInput = stuff.value.objectForKey("studyScore") as! Int
+        let imageName = "\(scoreInput)Stars"
+        self.studyScore.image = UIImage(named:imageName)
+        
+        //Study title
+        let studyTitleInput = stuff.value.objectForKey("studyTitle")
+        self.studyTitle.text? = studyTitleInput as! String
+        
+        //profile pic
+        let profilePicName = stuff.value.objectForKey("profilePic") as! String
+        let profileURL = NSURL(string:profilePicName)
+        let data = NSData(contentsOfURL: profileURL!)
+        self.profilePicture.image = UIImage(data: data!)
+        
+        //classes
+        for item in stuff.value.objectForKey("currentClasses") as! [String] {
+            newItems.append(item)
+            print("adding!")
+        }
+        
+        self.items = newItems
+        self.tableView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,34 +92,11 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             for stuff in snapshot.children {
                 
-                var newItems: [String] = []
-                
                 let id = stuff.value.objectForKey("id") as! NSString
-            
-                print("ID: " + (id as String))
-                print("PASSED ID: " + String(self.passedID))
                 
                 if(id == self.passedID) {
-                    print("found it!")
                     
-                    self.firstEntry = stuff.value.objectForKey("classBoolean") as! Bool
-                    self.firstName = stuff.value.objectForKey("firstName") as! String
-                    self.lastName = stuff.value.objectForKey("lastName") as! String
-                    self.welcomeSign.text = "\(self.firstName) \(self.lastName)"
-                    let scoreInput = stuff.value.objectForKey("studyScore") as! Int
-                    let imageName = "\(scoreInput)Stars"
-                    self.studyScore.image = UIImage(named:imageName)
-                    let studyTitleInput = stuff.value.objectForKey("studyTitle")
-                    self.studyTitle.text? = studyTitleInput as! String
-                    
-                    for item in stuff.value.objectForKey("currentClasses") as! [String] {
-                        newItems.append(item)
-                        print("adding!")
-                    }
-                    
-                    self.items = newItems
-                    self.tableView.reloadData()
-                    self.passedRef = stuff.value.objectForKey("ref") as! String
+                    self.setAllUserData(stuff as! FDataSnapshot)
                 }
             }
             
@@ -153,7 +174,6 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     //Alert function that shows pop up alerts to the user
      func sendAlert(title: String, message: String) {
-     
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)

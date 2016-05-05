@@ -65,7 +65,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J6D-I1-sLK">
-                                <rect key="frame" x="87" y="77" width="240" height="128"/>
+                                <rect key="frame" x="87" y="88" width="240" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="hEY-hG-wax"/>
                                 </constraints>
@@ -112,6 +112,13 @@
                                     <outlet property="delegate" destination="Tlx-LE-wkZ" id="Kec-vb-xmE"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7qZ-24-UEM">
+                                <rect key="frame" x="87" y="366" width="240" height="30"/>
+                                <state key="normal" title="Add Class"/>
+                                <connections>
+                                    <action selector="addClass:" destination="Tlx-LE-wkZ" eventType="touchUpInside" id="b9s-Vo-S4p"/>
+                                </connections>
+                            </button>
                             <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mMG-UQ-8hR">
                                 <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                                 <items>
@@ -125,20 +132,13 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7qZ-24-UEM">
-                                <rect key="frame" x="87" y="366" width="240" height="30"/>
-                                <state key="normal" title="Add Class"/>
-                                <connections>
-                                    <action selector="addClass:" destination="Tlx-LE-wkZ" eventType="touchUpInside" id="b9s-Vo-S4p"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Ll8-Ls-neA" firstAttribute="trailing" secondItem="rP5-oL-SXv" secondAttribute="trailing" id="3PX-JD-KkT"/>
                             <constraint firstItem="vKZ-oz-aRP" firstAttribute="top" secondItem="Ll8-Ls-neA" secondAttribute="bottom" constant="8" symbolic="YES" id="5hI-Uz-yFQ"/>
                             <constraint firstItem="rP5-oL-SXv" firstAttribute="leading" secondItem="J6D-I1-sLK" secondAttribute="leading" id="AFw-Iq-SFD"/>
-                            <constraint firstItem="rP5-oL-SXv" firstAttribute="top" secondItem="J6D-I1-sLK" secondAttribute="bottom" constant="30" id="BCA-7K-s21"/>
+                            <constraint firstItem="rP5-oL-SXv" firstAttribute="top" secondItem="J6D-I1-sLK" secondAttribute="bottom" constant="19" id="BCA-7K-s21"/>
                             <constraint firstItem="7qZ-24-UEM" firstAttribute="top" secondItem="vKZ-oz-aRP" secondAttribute="bottom" constant="14" id="Gm7-Tv-D8L"/>
                             <constraint firstItem="Ll8-Ls-neA" firstAttribute="leading" secondItem="rP5-oL-SXv" secondAttribute="leading" id="Ncb-L4-Th4"/>
                             <constraint firstItem="J6D-I1-sLK" firstAttribute="centerX" secondItem="pRf-XF-HwQ" secondAttribute="centerX" id="Ofj-la-sWw"/>
@@ -156,17 +156,17 @@
                             <constraint firstItem="Ll8-Ls-neA" firstAttribute="leading" secondItem="vKZ-oz-aRP" secondAttribute="leading" id="zjM-8N-9eb"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" image="home-7" id="Mz1-Wm-5yK"/>
                     <navigationItem key="navigationItem" title="Home" id="lvn-ef-C1s">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="NiV-8V-AVy">
                             <connections>
-                                <action selector="logout:" destination="Tlx-LE-wkZ" id="1Yl-Go-eTl"/>
+                                <action selector="logout:" destination="Tlx-LE-wkZ" id="03m-jc-dXg"/>
+                                <segue destination="fnD-px-2ZW" kind="unwind" unwindAction="logoutNow:" id="Xx4-2C-RjN"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
-                        <outlet property="profilePicture" destination="J6D-I1-sLK" id="WDz-aC-lMQ"/>
+                        <outlet property="profilePicture" destination="J6D-I1-sLK" id="SfZ-Ez-OXf"/>
                         <outlet property="studyScore" destination="Ll8-Ls-neA" id="Y1M-Xd-AeV"/>
                         <outlet property="studyTitle" destination="vKZ-oz-aRP" id="PZq-Io-Sln"/>
                         <outlet property="tableView" destination="A87-UF-337" id="YMa-1y-W13"/>
@@ -176,7 +176,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ocf-Kg-Nl0" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="fnD-px-2ZW" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-245" y="2085"/>
+            <point key="canvasLocation" x="333" y="2043"/>
         </scene>
         <!--Classmates-->
         <scene sceneID="mlq-wN-gu0">
@@ -365,7 +365,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MTO-wi-k35" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2119" y="1759"/>
+            <point key="canvasLocation" x="2745" y="1759"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ElW-Wb-Jsb">
@@ -377,7 +377,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Tlx-LE-wkZ" kind="relationship" relationship="viewControllers" id="zJ5-O3-qBd"/>
+                        <segue destination="RHH-yx-O03" kind="relationship" relationship="viewControllers" id="zJ5-O3-qBd"/>
                         <segue destination="EBR-d5-ixc" kind="relationship" relationship="viewControllers" id="aFf-rA-j1n"/>
                         <segue destination="7VS-f4-F9I" kind="relationship" relationship="viewControllers" id="JHy-Lf-2fi"/>
                     </connections>
@@ -402,7 +402,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KY7-Qj-mgb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="24" y="3227"/>
+            <point key="canvasLocation" x="38" y="3137"/>
         </scene>
         <!--Groups-->
         <scene sceneID="SIX-X8-ZVs">
@@ -657,7 +657,26 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MLn-Yb-2Lf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1493" y="1759"/>
+            <point key="canvasLocation" x="2119" y="1759"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="eXX-mk-BPU">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RHH-yx-O03" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" image="home-7" id="Mz1-Wm-5yK"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bU8-yn-2rv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Tlx-LE-wkZ" kind="relationship" relationship="rootViewController" id="v65-EM-dti"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tkl-Ie-4Yp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-252" y="2043"/>
         </scene>
     </scenes>
     <resources>

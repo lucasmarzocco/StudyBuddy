@@ -7,6 +7,5 @@ struct Player {
   init(name: String?, game: String?) {
     self.name = name
     self.game = game
-
   }
 }
