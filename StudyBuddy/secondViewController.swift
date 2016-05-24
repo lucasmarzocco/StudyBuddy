@@ -91,6 +91,7 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         ref.observeEventType(.Value, withBlock: { snapshot in
             
             for stuff in snapshot.children {

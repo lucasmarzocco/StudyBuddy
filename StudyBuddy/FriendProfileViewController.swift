@@ -45,6 +45,7 @@ class FriendProfileViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Study!", style: UIAlertActionStyle.Default, handler: wordEntered))
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
+        
     }
     
     

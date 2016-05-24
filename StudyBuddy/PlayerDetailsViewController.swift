@@ -14,12 +14,10 @@ class PlayerDetailsViewController: UITableViewController {
   @IBOutlet weak var detailLabel: UILabel!
   
   required init?(coder aDecoder: NSCoder) {
-    print("init PlayerDetailsViewController")
     super.init(coder: aDecoder)
   }
   
   deinit {
-    print("deinit PlayerDetailsViewController")
   }
   
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -41,10 +39,8 @@ class PlayerDetailsViewController: UITableViewController {
   
   //Unwind segue
   @IBAction func unwindWithSelectedGame(segue:UIStoryboardSegue) {
-    if let gamePickerViewController = segue.sourceViewController as? GamePickerViewController,
-      selectedGame = gamePickerViewController.selectedGame {
+    if let gamePickerViewController = segue.sourceViewController as? GamePickerViewController, selectedGame = gamePickerViewController.selectedGame {
         game = selectedGame
     }
   }
-  
 }

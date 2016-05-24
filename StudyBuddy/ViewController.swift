@@ -49,8 +49,8 @@ class ViewController: UIViewController {
     @IBAction func facebookLogin(sender: AnyObject) {
         
         let fbLoginManager : FBSDKLoginManager = FBSDKLoginManager()
-        fbLoginManager.logInWithReadPermissions(["email"], fromViewController: self) { (result, error) -> Void in
-            
+        fbLoginManager.logInWithReadPermissions(["email", "public_profile", "user_friends"], fromViewController: self) { (result, error) -> Void in
+
             if (error == nil) {
                 let fbloginresult : FBSDKLoginManagerLoginResult = result
                 
