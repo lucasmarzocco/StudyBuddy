@@ -10,6 +10,7 @@
 		017193741CD6BA3700A59CA5 /* ClassmatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017193731CD6BA3700A59CA5 /* ClassmatesViewController.swift */; };
 		017193761CD6C3D000A59CA5 /* FriendProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017193751CD6C3D000A59CA5 /* FriendProfileViewController.swift */; };
 		01741F111CD815320066662E /* FacebookProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01741F101CD815320066662E /* FacebookProfile.swift */; };
+		0177FA531CF51F690067372D /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0177FA521CF51F690067372D /* NotificationViewController.swift */; };
 		01839EFE1CB208A800BDD110 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01839EFD1CB208A800BDD110 /* AppDelegate.swift */; };
 		01839F001CB208A800BDD110 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01839EFF1CB208A800BDD110 /* ViewController.swift */; };
 		01839F031CB208A800BDD110 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01839F011CB208A800BDD110 /* Main.storyboard */; };
@@ -50,6 +51,7 @@
 		017193731CD6BA3700A59CA5 /* ClassmatesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassmatesViewController.swift; sourceTree = "<group>"; };
 		017193751CD6C3D000A59CA5 /* FriendProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendProfileViewController.swift; sourceTree = "<group>"; };
 		01741F101CD815320066662E /* FacebookProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookProfile.swift; sourceTree = "<group>"; };
+		0177FA521CF51F690067372D /* NotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		01839EFA1CB208A800BDD110 /* StudyBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudyBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01839EFD1CB208A800BDD110 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01839EFF1CB208A800BDD110 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 		01839EFC1CB208A800BDD110 /* StudyBuddy */ = {
 			isa = PBXGroup;
 			children = (
+				0177FA521CF51F690067372D /* NotificationViewController.swift */,
 				01839EFD1CB208A800BDD110 /* AppDelegate.swift */,
 				01D41F1D1CD711F4007B84C5 /* Player.swift */,
 				01741F101CD815320066662E /* FacebookProfile.swift */,
@@ -379,6 +382,7 @@
 				01CAD4EF1CD01C6100620229 /* secondViewController.swift in Sources */,
 				01D41F251CD711F4007B84C5 /* PlayerDetailsViewController.swift in Sources */,
 				01D41F231CD711F4007B84C5 /* Player.swift in Sources */,
+				0177FA531CF51F690067372D /* NotificationViewController.swift in Sources */,
 				01D41F271CD711F4007B84C5 /* SampleData.swift in Sources */,
 				017193741CD6BA3700A59CA5 /* ClassmatesViewController.swift in Sources */,
 				01839EFE1CB208A800BDD110 /* AppDelegate.swift in Sources */,

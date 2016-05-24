@@ -80,10 +80,15 @@ class ViewController: UIViewController {
                     }
                 }
                 
-            let string = "/" + (self.facebookID as String) + "/friends"
+            let string = (self.facebookID as String) + "/friends"
             FBSDKGraphRequest(graphPath: string, parameters: ["fields": "user_friends"]).startWithCompletionHandler({ (connection, result, error) -> Void in
                 
-                print(result.valueForKey("user_friends"))
+                var friends: [String] = []
+                for friend in result.valueForKey("data") as! [AnyObject] {
+                    friends.append(friend.objectForKey("id") as! String)
+                }
+                
+                print(friends)
                 
             })
                 
