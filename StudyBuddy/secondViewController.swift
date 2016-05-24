@@ -109,7 +109,7 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         classRef.observeEventType(.Value, withBlock: { snapshot in
             
-            //figure out classes stuff here!
+            print("Classes list is changing!") //check this for changing class list!!!!!!!!!!!!
             
             }, withCancelBlock: { error in
                 print("An error has occurred")
@@ -197,7 +197,7 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
             sendAlert("ERROR", message: "Class field can't be empty!")
         }
         else if items.contains(self.wordField!.text!.uppercaseString) {
-            sendAlert("Duplicate Entry", message: "Class already has been added!") 
+            sendAlert("Duplicate Entry", message: "Class already has been added!")
         }
         else if wordField!.text!.containsString(" ") || wordField!.text!.containsString("-") {
             sendAlert("ERROR", message: "Class field cannot have a dash or space!")

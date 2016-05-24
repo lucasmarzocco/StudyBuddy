@@ -34,13 +34,14 @@ class ViewController: UIViewController {
 
             let groups: [String] = [""]
             let classes: [String] = [""]
+            let id: String = facebookID as String
             
-            if(!currentProfiles.contains(firstName + lastName)) {
+            if(!currentProfiles.contains(id)) { //fix this for IDs
 
                 print("New shit added!!!")
                 let newProfile = FacebookProfile(firstName: self.firstName, lastName: self.lastName, studyScore: 1, studyTitle: "Beginner", currentGroups: groups, currentClasses: classes, profilePic: facebookProfileUrl?.absoluteString, ref: self.ref.description, id: facebookID, classBoolean: true)
             
-                let profileRef = self.ref.childByAppendingPath(firstName + " " + lastName)
+                let profileRef = self.ref.childByAppendingPath(id)
                 profileRef.setValue(newProfile.toAnyObject())
             }
         }
@@ -111,10 +112,9 @@ class ViewController: UIViewController {
             
             for stuff in snapshot.children {
                 
-                let firstName = stuff.value.objectForKey("firstName") as! String
-                let lastName = stuff.value.objectForKey("lastName") as! String
+                let id = stuff.value.objectForKey("id") as! String
                 
-                profiles.append(firstName + lastName)
+                profiles.append(id)
             }
             
             self.currentProfiles = profiles
