@@ -282,7 +282,7 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 if(!classDictionary[classString]!.contains(String(self.firstName) + " " + String(self.lastName))) {
                     
                     var studentList = classDictionary[classString] as [String]!
-                    studentList.append(String(self.firstName) + " " + String(self.lastName)) //studentList is null when re-entering!
+                    studentList.append(String(self.firstName) + " " + String(self.lastName))
                     classDictionary[classString] = studentList
                 }
             }

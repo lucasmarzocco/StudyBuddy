@@ -65,6 +65,7 @@ class ViewController: UIViewController {
     func getFBUserData() {
         
         if((FBSDKAccessToken.currentAccessToken()) != nil) {
+            
             FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).startWithCompletionHandler({ (connection, result, error) -> Void in
                 
                 if (error == nil) {
@@ -78,8 +79,15 @@ class ViewController: UIViewController {
                         }
                     }
                 }
-              })
-            }
+                
+            let string = "/" + (self.facebookID as String) + "/friends"
+            FBSDKGraphRequest(graphPath: string, parameters: ["fields": "user_friends"]).startWithCompletionHandler({ (connection, result, error) -> Void in
+                
+                print(result.valueForKey("user_friends"))
+                
+            })
+                
+            })}
     }
     
     @IBAction func logout(sender: AnyObject) {
