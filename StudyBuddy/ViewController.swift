@@ -14,11 +14,11 @@ import Firebase
 
 class ViewController: UIViewController {
     
+    let ref = Firebase(url: "https://incandescent-heat-2456.firebaseio.com/Users")
     var profilePicture:UIImageView = UIImageView()
+    var currentProfiles = [String]()
     var firstName: String!
     var lastName: String!
-    var currentProfiles = [String]()
-    let ref = Firebase(url: "https://incandescent-heat-2456.firebaseio.com/Users")
     var facebookID: NSString!
     
     //Sets image to Facebook profile picture image
@@ -36,9 +36,8 @@ class ViewController: UIViewController {
             let classes: [String] = [""]
             let id: String = facebookID as String
             
-            if(!currentProfiles.contains(id)) { //fix this for IDs
-
-                print("New shit added!!!")
+            if(!currentProfiles.contains(id)) {
+                
                 let newProfile = FacebookProfile(firstName: self.firstName, lastName: self.lastName, studyScore: 1, studyTitle: "Beginner", currentGroups: groups, currentClasses: classes, profilePic: facebookProfileUrl?.absoluteString, ref: self.ref.description, id: facebookID, classBoolean: true)
             
                 let profileRef = self.ref.childByAppendingPath(id)
@@ -50,14 +49,12 @@ class ViewController: UIViewController {
     @IBAction func facebookLogin(sender: AnyObject) {
         
         let fbLoginManager : FBSDKLoginManager = FBSDKLoginManager()
-
         fbLoginManager.logInWithReadPermissions(["email"], fromViewController: self) { (result, error) -> Void in
             
             if (error == nil) {
                 let fbloginresult : FBSDKLoginManagerLoginResult = result
                 
-                if(fbloginresult.grantedPermissions.contains("email"))
-                {
+                if(fbloginresult.grantedPermissions.contains("email")) {
                     self.getFBUserData()
                 }
             }
@@ -74,7 +71,7 @@ class ViewController: UIViewController {
                     if let id: NSString = result.valueForKey("id") as? NSString {
                         if let firstName: NSString = result.valueForKey("first_name") as? NSString {
                             if let lastName: NSString = result.valueForKey("last_name") as? NSString {
-                                self.storeID(id)
+                                self.facebookID = id
                                 self.returnUserInfo(id, firstName: firstName as String, lastName: lastName as String)
                                 self.performSegueWithIdentifier("worked", sender: self)
                             }
@@ -83,10 +80,6 @@ class ViewController: UIViewController {
                 }
               })
             }
-    }
-    
-    func storeID(id: NSString) {
-        self.facebookID = id
     }
     
     @IBAction func logout(sender: AnyObject) {
@@ -111,9 +104,7 @@ class ViewController: UIViewController {
             var profiles = [String]()
             
             for stuff in snapshot.children {
-                
                 let id = stuff.value.objectForKey("id") as! String
-                
                 profiles.append(id)
             }
             
@@ -133,13 +124,8 @@ class ViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     
         if(segue.identifier == "worked") {
-            
             let dest = segue.destinationViewController.childViewControllers
             let bob = dest[0].childViewControllers[0] as! secondViewController
-            
-            if(bob.passedID == nil) {
-                print ("ID is null for now")
-            }
             bob.passedID = self.facebookID
         }
     }

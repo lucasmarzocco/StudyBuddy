@@ -34,7 +34,8 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var passedID: NSString!
     var firstEntry = true
     var items: [String] = [""]
-    var classes: [String] = []
+    var dbClasses: [String] = []
+    var classDictionary: [String:[String]] = ["":[]]
     
     @IBAction func addClass(sender: AnyObject) {
         
@@ -47,7 +48,7 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func setAllUserData(stuff: FDataSnapshot) {
         
-        var newItems: [String] = []
+        var newClasses: [String] = []
         
         //First class added or not
         self.firstEntry = stuff.value.objectForKey("classBoolean") as! Bool
@@ -81,24 +82,21 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         //classes
         for item in stuff.value.objectForKey("currentClasses") as! [String] {
-            newItems.append(item)
+            newClasses.append(item)
         }
         
-        self.items = newItems
+        self.items = newClasses
         self.tableView.reloadData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         ref.observeEventType(.Value, withBlock: { snapshot in
             
             for stuff in snapshot.children {
                 
                 let id = stuff.value.objectForKey("id") as! NSString
-                
                 if(id == self.passedID) {
-                    
                     self.setAllUserData(stuff as! FDataSnapshot)
                 }
             }
@@ -109,7 +107,21 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         classRef.observeEventType(.Value, withBlock: { snapshot in
             
-            print("Classes list is changing!") //check this for changing class list!!!!!!!!!!!!
+            var internalClasses: [String] = []
+            var students: [String] = []
+            var localDict: [String: [String]] = [:]
+            
+            for stuff in snapshot.children {
+                internalClasses.append(stuff.key)
+                students = self.setUpClassDictionary(stuff.key, classInfo: stuff as! FDataSnapshot)
+                localDict[stuff.key] = students
+            }
+            
+            self.dbClasses = internalClasses
+            self.classDictionary = localDict
+            
+            print("What's in the dictionary?")
+            print(self.classDictionary)
             
             }, withCancelBlock: { error in
                 print("An error has occurred")
@@ -117,6 +129,17 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.allowsSelection = true
+    }
+    
+    func setUpClassDictionary(classString: String!, classInfo: FDataSnapshot) -> [String] {
+        
+        var students: [String] = []
+        
+        for student in classInfo.value.objectForKey("currentStudents") as! [String] {
+            students.append(student)
+        }
+        
+        return students
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -160,25 +183,53 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
             
-            let newString = "/" + (self.firstName as String) + " " + (self.lastName as String) + "/classBoolean"
-            let new = passedRef + newString
-            var changeClass = Firebase(url: new)
+            let classBooleanString = "/" + String(self.passedID) + "/classBoolean"
+            let fullClassBooleanString = passedRef + classBooleanString
+            let classBooleanURL = Firebase(url: fullClassBooleanString)
+            var classString = ""
             
             if(items.count == 1) {
+                classString = items[0]
                 items[0] = ""
-                changeClass.setValue(true)
+                classBooleanURL.setValue(true)
             }
             else {
+                classString = items[indexPath.row]
                 items.removeAtIndex(indexPath.row)
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
             }
 
-            let newString1 = "/" + (self.firstName as String) + " " + (self.lastName as String) + "/currentClasses"
-            let new1 = passedRef + newString1
-            changeClass = Firebase(url: new1)
-            changeClass.setValue(items)
+            let currentClassesString = "/" + String(self.passedID) + "/currentClasses"
+            let fullCurrentClassesString = passedRef + currentClassesString
+            let currentClassesURL = Firebase(url: fullCurrentClassesString)
+            
+            let classReference = classRef.childByAppendingPath(classString + "/currentStudents")
+            let currentState = self.classDictionary[classString] as [String]!
+            
+            if(currentState.count == 1) {
+                classDictionary[classString] = nil
+            }
+            else {
+                let newStudents = self.removeStudentName(String(self.firstName) + " " + String(self.lastName), className: classString)
+                classDictionary[classString] = newStudents
+            }
+            currentClassesURL.setValue(items)
+            classReference.setValue(classDictionary[classString])
             tableView.reloadData()
         }
+    }
+    
+    func removeStudentName(name: String!, className: String!) -> [String] {
+        
+        var newStudents: [String] = []
+        
+        for student in classDictionary[className]! {
+            if(student != name) {
+                newStudents.append(student)
+            }
+        }
+        
+        return newStudents
     }
     
     
@@ -203,28 +254,49 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
             sendAlert("ERROR", message: "Class field cannot have a dash or space!")
         }
         else {
-            
-            let newString = "/" + (self.firstName as String) + " " + (self.lastName as String) + "/classBoolean"
-            let new = passedRef + newString
-            let changeClass = Firebase(url: new)
+        
+            let classBooleanString = "/" + String(self.passedID) + "/classBoolean"
+            let fullClassBooleanString = passedRef + classBooleanString
+            let classBooleanURL = Firebase(url: fullClassBooleanString)
             
             if(self.firstEntry) {
                 items[0] = self.wordField!.text!.uppercaseString
-                changeClass.setValue(false)
+                classBooleanURL.setValue(false)
             }
             else {
                 items.append(self.wordField!.text!.uppercaseString)
             }
 
-            let newString1 = "/" + (self.firstName as String) + " " + (self.lastName as String) + "/currentClasses"
-            let new1 = passedRef + newString1
-            let changeClass1 = Firebase(url: new1)
-            changeClass1.setValue(items)
-            classes.append(self.wordField!.text!.uppercaseString)
-            classRef.setValue(classes)
+            let currentClassesString = "/" + String(self.passedID) + "/currentClasses"
+            let fullCurrentClassesString = passedRef + currentClassesString
+            let currentClassesURL = Firebase(url: fullCurrentClassesString)
+            currentClassesURL.setValue(items)
+            
+            
+            let classString = self.wordField!.text!.uppercaseString
+            let classReference = classRef.childByAppendingPath(classString + "/currentStudents")
+            
+            if(dbClasses.contains(classString)) {
+                
+                if(!classDictionary[classString]!.contains(String(self.firstName) + " " + String(self.lastName))) {
+                    
+                    var studentList = classDictionary[classString] as [String]!
+                    studentList.append(String(self.firstName) + " " + String(self.lastName)) //studentList is null when re-entering!
+                    classDictionary[classString] = studentList
+                }
+            }
+            
+            else {
+                var newArr: [String] = []
+                newArr.append(String(self.firstName) + " " + String(self.lastName))
+                classDictionary[classString] = newArr
+            }
+
+            classReference.setValue(classDictionary[classString])
             tableView.reloadData()
         }
     }
+    
     
     //Text field for adding classes
     func addTextField(textField: UITextField!) {
