@@ -24,7 +24,7 @@
                   moduleName = "StudyBuddy"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lucasmarzocco/Desktop/StudyBuddy/StudyBuddy/ViewController.swift"
-                  timestampString = "485763293.773702"
+                  timestampString = "485826649.204434"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -39,7 +39,7 @@
                   moduleName = "StudyBuddy"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lucasmarzocco/Desktop/StudyBuddy/StudyBuddy/ViewController.swift"
-                  timestampString = "485763293.773922"
+                  timestampString = "485826649.204569"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "17"
@@ -54,7 +54,7 @@
                   moduleName = "StudyBuddy"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lucasmarzocco/Desktop/StudyBuddy/StudyBuddy/ViewController.swift"
-                  timestampString = "485763293.774064"
+                  timestampString = "485826649.20468"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "17"
@@ -220,6 +220,22 @@
             startingLineNumber = "116"
             endingLineNumber = "116"
             landmarkName = "viewDidAppear(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "StudyBuddy/NotificationViewController.swift"
+            timestampString = "485826648.167795"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "tableView(_:cellForRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
