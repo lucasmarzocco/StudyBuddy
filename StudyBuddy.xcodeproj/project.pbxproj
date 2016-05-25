@@ -134,7 +134,6 @@
 		01839EFC1CB208A800BDD110 /* StudyBuddy */ = {
 			isa = PBXGroup;
 			children = (
-				0177FA521CF51F690067372D /* NotificationViewController.swift */,
 				01839EFD1CB208A800BDD110 /* AppDelegate.swift */,
 				01D41F1D1CD711F4007B84C5 /* Player.swift */,
 				01741F101CD815320066662E /* FacebookProfile.swift */,
@@ -147,6 +146,7 @@
 				01D41F1C1CD711F4007B84C5 /* GamePickerViewController.swift */,
 				01D41F1F1CD711F4007B84C5 /* PlayerDetailsViewController.swift */,
 				01D41F201CD711F4007B84C5 /* PlayersViewController.swift */,
+				0177FA521CF51F690067372D /* NotificationViewController.swift */,
 				01839F011CB208A800BDD110 /* Main.storyboard */,
 				01839F061CB208A800BDD110 /* LaunchScreen.storyboard */,
 				01839F091CB208A800BDD110 /* Info.plist */,

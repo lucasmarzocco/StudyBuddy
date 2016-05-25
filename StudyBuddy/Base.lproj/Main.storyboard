@@ -309,6 +309,9 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yw6-7f-mkH">
                                             <rect key="frame" x="352" y="7" width="54" height="30"/>
                                             <state key="normal" title="Dismiss"/>
+                                            <connections>
+                                                <action selector="dismissNotification:" destination="4Ia-If-D0A" eventType="touchUpInside" id="rf7-xk-zk8"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -339,10 +342,16 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K8i-8i-iQL">
                                             <rect key="frame" x="376" y="7" width="30" height="30"/>
                                             <state key="normal" title="Y"/>
+                                            <connections>
+                                                <action selector="pressY:" destination="4Ia-If-D0A" eventType="touchUpInside" id="QGw-3m-YXz"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LFt-HQ-uQU">
                                             <rect key="frame" x="338" y="7" width="30" height="30"/>
                                             <state key="normal" title="N"/>
+                                            <connections>
+                                                <action selector="pressN:" destination="4Ia-If-D0A" eventType="touchUpInside" id="2J3-Ad-Xog"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>

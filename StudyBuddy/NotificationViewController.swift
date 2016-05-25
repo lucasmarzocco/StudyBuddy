@@ -8,6 +8,21 @@ class NotificationViewController: UITableViewController {
     var players:[Player] = playersData
     var requests:[Player] = requestData
     
+    override func viewDidLoad() {
+        tableView.allowsSelection = false
+    }
+    
+    @IBAction func dismissNotification(sender: AnyObject) {
+        print("Dismiss bitch!")
+    }
+    
+    @IBAction func pressY(sender: AnyObject) {
+        print("Press y!")
+    }
+    
+    @IBAction func pressN(sender: AnyObject) {
+        print("Press n!")
+    }
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
