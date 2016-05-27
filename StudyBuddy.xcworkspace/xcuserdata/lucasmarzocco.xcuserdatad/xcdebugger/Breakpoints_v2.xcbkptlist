@@ -24,12 +24,12 @@
                   moduleName = "StudyBuddy"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lucasmarzocco/Desktop/StudyBuddy/StudyBuddy/ViewController.swift"
-                  timestampString = "486001271.100889"
+                  timestampString = "486025290.913578"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
                   endingLineNumber = "0"
-                  offsetFromSymbolStart = "12">
+                  offsetFromSymbolStart = "4">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -39,12 +39,12 @@
                   moduleName = "StudyBuddy"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lucasmarzocco/Desktop/StudyBuddy/StudyBuddy/ViewController.swift"
-                  timestampString = "486001271.10106"
+                  timestampString = "486025290.913695"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "17"
                   endingLineNumber = "17"
-                  offsetFromSymbolStart = "64">
+                  offsetFromSymbolStart = "57">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -54,12 +54,12 @@
                   moduleName = "StudyBuddy"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/lucasmarzocco/Desktop/StudyBuddy/StudyBuddy/ViewController.swift"
-                  timestampString = "486001271.101579"
+                  timestampString = "486025290.913774"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "17"
                   endingLineNumber = "17"
-                  offsetFromSymbolStart = "24">
+                  offsetFromSymbolStart = "19">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -119,74 +119,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StudyBuddy/secondViewController.swift"
-            timestampString = "486003101.847606"
+            timestampString = "486029448.322222"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "StudyBuddy.secondViewController.viewDidLoad () -&gt; ()"
-                  moduleName = "StudyBuddy"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lucasmarzocco/Desktop/StudyBuddy/StudyBuddy/secondViewController.swift"
-                  timestampString = "485753875.105292"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "104"
-                  endingLineNumber = "104"
-                  offsetFromSymbolStart = "608">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "StudyBuddy.secondViewController.(viewDidLoad () -&gt; ()).(closure #1)"
-                  moduleName = "StudyBuddy"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lucasmarzocco/Desktop/StudyBuddy/StudyBuddy/secondViewController.swift"
-                  timestampString = "485753875.105408"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "104"
-                  endingLineNumber = "104"
-                  offsetFromSymbolStart = "1104">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "StudyBuddy.secondViewController.(viewDidLoad () -&gt; ()).(closure #2)"
-                  moduleName = "StudyBuddy"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lucasmarzocco/Desktop/StudyBuddy/StudyBuddy/secondViewController.swift"
-                  timestampString = "485753875.105514"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "105"
-                  endingLineNumber = "105"
-                  offsetFromSymbolStart = "16">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "StudyBuddy/secondViewController.swift"
-            timestampString = "486003101.847606"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
             landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
@@ -198,11 +135,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StudyBuddy/secondViewController.swift"
-            timestampString = "486003101.847606"
+            timestampString = "486029448.322222"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
             landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
@@ -262,11 +199,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StudyBuddy/secondViewController.swift"
-            timestampString = "486003101.847606"
+            timestampString = "486029448.322222"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
             landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>

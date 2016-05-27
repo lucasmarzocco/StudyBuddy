@@ -40,7 +40,7 @@ class ViewController: UIViewController {
             
             if(!currentProfiles.contains(id)) {
                 
-                let newProfile = FacebookProfile(firstName: self.firstName, lastName: self.lastName, studyScore: 1, studyTitle: "Beginner", currentGroups: groups, currentClasses: classes, profilePic: facebookProfileUrl?.absoluteString, ref: self.ref.description, id: facebookID, classBoolean: true)
+                let newProfile = FacebookProfile(firstName: self.firstName, lastName: self.lastName, studyScore: 0, studyTitle: "Beginner", currentGroups: groups, currentClasses: classes, profilePic: facebookProfileUrl?.absoluteString, numberOfRatings: 0, id: facebookID, classBoolean: true)
             
                 let profileRef = self.ref.childByAppendingPath(id)
                 profileRef.setValue(newProfile.toAnyObject())

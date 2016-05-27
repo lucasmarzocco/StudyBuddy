@@ -30,12 +30,11 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var profPic: UIImageView!
     var firstName: NSString!
     var lastName: NSString!
-    var passedRef: String!
     var passedID: NSString!
+    var numberRatings: Int!
     var firstEntry = true
     
     var items: [String] = [""]
-    
     var dbClasses: [String] = []
     var classDictionary: [String:[String]] = ["":[]]
     var studentDictionary: [String: String] = [:]
@@ -64,14 +63,19 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         //Last name
         self.lastName = stuff.value.objectForKey("lastName") as! String
         
-        //Reference to firebase
-        self.passedRef = stuff.value.objectForKey("ref") as! String
-        
         //Welcome sign for profile
         self.welcomeSign.text = "\(self.firstName) \(self.lastName)"
         
+        self.numberRatings = stuff.value.objectForKey("numberRatings") as! Int
+        
         //Study score and pic
-        let scoreInput = stuff.value.objectForKey("studyScore") as! Int
+        var scoreInput = 0
+        
+        if(self.numberRatings > 0) {
+            scoreInput = (stuff.value.objectForKey("studyScore") as! Int / self.numberRatings)
+            
+        }
+        
         let imageName = "\(scoreInput)Stars"
         self.studyScore.image = UIImage(named:imageName)
         
@@ -106,9 +110,6 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     self.setAllUserData(stuff as! FDataSnapshot)
                 }
             }
-            
-            }, withCancelBlock: { error in
-                print("An error has occurred")
         })
         
         classRef.observeEventType(.Value, withBlock: { snapshot in
@@ -128,9 +129,6 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             print("Who is in what classes?")
             print(self.classDictionary)
-            
-            }, withCancelBlock: { error in
-                print("An error has occurred")
         })
         
         dictRef.observeEventType(.Value, withBlock: { snapshot in
@@ -147,9 +145,6 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             print("What's the student dict look like?")
             print(self.studentDictionary)
-            
-            }, withCancelBlock: { error in
-                print("An error has occurred")
         })
         
         let string = (self.passedID as String) + "/friends"
@@ -212,7 +207,6 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
         self.passedList = self.returnAllFriendsInClass(items[indexPath.row])
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         self.performSegueWithIdentifier("goToFriends", sender: self)
@@ -242,7 +236,7 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if editingStyle == UITableViewCellEditingStyle.Delete {
             
             let classBooleanString = "/" + String(self.passedID) + "/classBoolean"
-            let fullClassBooleanString = passedRef + classBooleanString
+            let fullClassBooleanString = self.ref.description + classBooleanString
             let classBooleanURL = Firebase(url: fullClassBooleanString)
             var classString = ""
             
@@ -258,7 +252,7 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
 
             let currentClassesString = "/" + String(self.passedID) + "/currentClasses"
-            let fullCurrentClassesString = passedRef + currentClassesString
+            let fullCurrentClassesString = self.ref.description + currentClassesString
             let currentClassesURL = Firebase(url: fullCurrentClassesString)
             
             let classReference = classRef.childByAppendingPath(classString + "/currentStudents")
@@ -314,7 +308,7 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         else {
         
             let classBooleanString = "/" + String(self.passedID) + "/classBoolean"
-            let fullClassBooleanString = passedRef + classBooleanString
+            let fullClassBooleanString = self.ref.description + classBooleanString
             let classBooleanURL = Firebase(url: fullClassBooleanString)
             
             if(self.firstEntry) {
@@ -326,7 +320,7 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
 
             let currentClassesString = "/" + String(self.passedID) + "/currentClasses"
-            let fullCurrentClassesString = passedRef + currentClassesString
+            let fullCurrentClassesString = self.ref.description + currentClassesString
             let currentClassesURL = Firebase(url: fullCurrentClassesString)
             currentClassesURL.setValue(items)
             
@@ -363,6 +357,8 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let dest = segue.destinationViewController.childViewControllers
             let bob = dest[0] as! ClassmatesViewController
             bob.friends = self.passedList
+            bob.facebookID = self.passedID
+            bob.studentDictionary = self.studentDictionary
         }
     }
     
