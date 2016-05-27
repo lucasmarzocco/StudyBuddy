@@ -10,9 +10,8 @@ import UIKit
 
 class ClassmatesViewController: UITableViewController {
     
-    var items: [String] = ["Lucas Marzocco", "Oscar Qiu", "William Smith", "James Oh"]
-    var list = ""
-
+    var friends: [String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -23,13 +22,13 @@ class ClassmatesViewController: UITableViewController {
     
     //# of rows in UITableView
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return friends.count
     }
     
     //Populates UITableView with cells from items array
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
-        cell.textLabel?.text = items[indexPath.item]
+        cell.textLabel?.text = friends[indexPath.item]
         return cell
     }
     
@@ -45,7 +44,7 @@ class ClassmatesViewController: UITableViewController {
         if(segue.identifier == "friendProfile") {
             let vc: FriendProfileViewController = segue.destinationViewController as! FriendProfileViewController
             let selectedRow = tableView.indexPathForSelectedRow!.row
-            vc.profileName = items[selectedRow]
+            vc.profileName = friends[selectedRow]
         }
     }
 }

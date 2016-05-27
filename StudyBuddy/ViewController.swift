@@ -15,6 +15,8 @@ import Firebase
 class ViewController: UIViewController {
     
     let ref = Firebase(url: "https://incandescent-heat-2456.firebaseio.com/Users")
+    let dictRef = Firebase(url: "https://incandescent-heat-2456.firebaseio.com/Dict")
+    
     var profilePicture:UIImageView = UIImageView()
     var currentProfiles = [String]()
     var firstName: String!
@@ -73,6 +75,7 @@ class ViewController: UIViewController {
                         if let firstName: NSString = result.valueForKey("first_name") as? NSString {
                             if let lastName: NSString = result.valueForKey("last_name") as? NSString {
                                 self.facebookID = id
+                                self.addToFirebaseDictionary(self.facebookID, name: ((firstName as String) + " " + (lastName as String)))
                                 self.returnUserInfo(id, firstName: firstName as String, lastName: lastName as String)
                                 self.performSegueWithIdentifier("worked", sender: self)
                             }
@@ -80,19 +83,13 @@ class ViewController: UIViewController {
                     }
                 }
                 
-            let string = (self.facebookID as String) + "/friends"
-            FBSDKGraphRequest(graphPath: string, parameters: ["fields": "user_friends"]).startWithCompletionHandler({ (connection, result, error) -> Void in
-                
-                var friends: [String] = []
-                for friend in result.valueForKey("data") as! [AnyObject] {
-                    friends.append(friend.objectForKey("id") as! String)
-                }
-                
-                print(friends)
-                
-            })
-                
             })}
+    }
+    
+    func addToFirebaseDictionary(id: NSString!, name: NSString!) {
+        
+        let dictRef = self.dictRef.childByAppendingPath(id as String)
+        dictRef.setValue(name)
     }
     
     @IBAction func logout(sender: AnyObject) {

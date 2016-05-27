@@ -14,10 +14,10 @@ import Firebase
 
 class secondViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    
     let ref = Firebase(url: "https://incandescent-heat-2456.firebaseio.com/Users")
     let classRef = Firebase(url: "https://incandescent-heat-2456.firebaseio.com/Classes")
     let mainRef = Firebase(url: "https://incandescent-heat-2456.firebaseio.com")
+    let dictRef = Firebase(url: "https://incandescent-heat-2456.firebaseio.com/Dict")
     
     @IBOutlet weak var welcomeSign: UILabel!
     @IBOutlet weak var studyScore: UIImageView!
@@ -33,9 +33,14 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var passedRef: String!
     var passedID: NSString!
     var firstEntry = true
+    
     var items: [String] = [""]
+    
     var dbClasses: [String] = []
     var classDictionary: [String:[String]] = ["":[]]
+    var studentDictionary: [String: String] = [:]
+    var friendsList: [String] = []
+    var passedList: [String] = []
     
     @IBAction func addClass(sender: AnyObject) {
         
@@ -121,15 +126,54 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
             self.dbClasses = internalClasses
             self.classDictionary = localDict
             
-            print("What's in the dictionary?")
+            print("Who is in what classes?")
             print(self.classDictionary)
             
             }, withCancelBlock: { error in
                 print("An error has occurred")
         })
         
+        dictRef.observeEventType(.Value, withBlock: { snapshot in
+            
+            var localDict: [String: String] = [:]
+            
+            for stuff in snapshot.children {
+                let id = stuff.key
+                let name = self.setUpStudentDictionary(stuff as! FDataSnapshot)
+                localDict[id] = name
+            }
+
+            self.studentDictionary = localDict
+            
+            print("What's the student dict look like?")
+            print(self.studentDictionary)
+            
+            }, withCancelBlock: { error in
+                print("An error has occurred")
+        })
+        
+        let string = (self.passedID as String) + "/friends"
+        FBSDKGraphRequest(graphPath: string, parameters: ["fields": "user_friends"]).startWithCompletionHandler({ (connection, result, error) -> Void in
+            
+            var friends: [String] = []
+            for friend in result.valueForKey("data") as! [AnyObject] {
+                if(self.studentDictionary[friend.objectForKey("id") as! String] != nil) {
+                    friends.append(self.studentDictionary[friend.objectForKey("id") as! String]!)
+                }
+            }
+            
+            self.friendsList = friends
+            
+            print("What is my friends list?")
+            print(self.friendsList)
+        })
+        
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.allowsSelection = true
+    }
+    
+    func setUpStudentDictionary(snapshot: FDataSnapshot) -> String {
+        return snapshot.value as! String
     }
     
     func setUpClassDictionary(classString: String!, classInfo: FDataSnapshot) -> [String] {
@@ -151,7 +195,7 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.didReceiveMemoryWarning()
     }
     
-    //# of rows in UITableView
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(items[0] == "") {
             return 0
@@ -161,26 +205,39 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
-    //Populates UITableView with cells from items array
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
         cell.textLabel?.text = items[indexPath.item]
         return cell
     }
     
-    //When Cell is pressed
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        self.passedList = self.returnAllFriendsInClass(items[indexPath.row])
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         self.performSegueWithIdentifier("goToFriends", sender: self)
     }
     
+    func returnAllFriendsInClass(className: String) -> [String] {
+        
+        var friends : [String] = []
+        
+        for friend in friendsList {
+            
+            if((classDictionary[className]?.contains(friend)) != false) {
+                friends.append(friend)
+            }
+        }
+        
+        return friends
+    }
     
-    //For Cell deletion/editing
+    
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
     
-    //Swipe to delete functionality
+    
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
             
@@ -298,6 +355,16 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if(segue.identifier == "goToFriends") {
+    
+            let dest = segue.destinationViewController.childViewControllers
+            let bob = dest[0] as! ClassmatesViewController
+            bob.friends = self.passedList
+        }
+    }
     
     //Text field for adding classes
     func addTextField(textField: UITextField!) {
