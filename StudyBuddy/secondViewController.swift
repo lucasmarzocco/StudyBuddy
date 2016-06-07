@@ -26,6 +26,7 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet var wordField: UITextField?
     @IBOutlet weak var mainPage: UITabBarItem!
     @IBOutlet weak var profilePicture: UIImageView!
+    @IBOutlet weak var backgroundPic: UIImageView!
     
     var profPic: UIImageView!
     var firstName: NSString!
@@ -34,7 +35,7 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var numberRatings: Int!
     var firstEntry = true
     
-    var items: [String] = [""]
+    var items: [String] = []
     var dbClasses: [String] = []
     var classDictionary: [String:[String]] = ["":[]]
     var studentDictionary: [String: String] = [:]
@@ -54,9 +55,6 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         var newClasses: [String] = []
         
-        //First class added or not
-        self.firstEntry = stuff.value.objectForKey("classBoolean") as! Bool
-        
         //First name
         self.firstName = stuff.value.objectForKey("firstName") as! String
         
@@ -73,39 +71,86 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         if(self.numberRatings > 0) {
             scoreInput = (stuff.value.objectForKey("studyScore") as! Int / self.numberRatings)
-            
         }
         
         let imageName = "\(scoreInput)Stars"
         self.studyScore.image = UIImage(named:imageName)
         
         //Study title
-        let studyTitleInput = stuff.value.objectForKey("studyTitle")
-        self.studyTitle.text? = studyTitleInput as! String
+        //let studyTitleInput = stuff.value.objectForKey("studyTitle")
+        
+        self.studyTitle.text? = self.findStudyTitle(scoreInput)
         
         //profile pic
         let profilePicName = stuff.value.objectForKey("profilePic") as! String
         let profileURL = NSURL(string:profilePicName)
         let data = NSData(contentsOfURL: profileURL!)
         self.profilePicture.image = UIImage(data: data!)
+        self.backgroundPic.image = UIImage(data: data!)
         
         //classes
-        for item in stuff.value.objectForKey("currentClasses") as! [String] {
-            newClasses.append(item)
+        if(stuff.value.objectForKey("currentClasses") != nil) {
+            for item in stuff.value.objectForKey("currentClasses") as! [String] {
+                newClasses.append(item)
+            }
         }
         
         self.items = newClasses
         self.tableView.reloadData()
     }
     
+    
+    
+    func findStudyTitle(studyScore: Int!) -> String {
+        
+        switch(studyScore) {
+            case 0: return "New to Study Buddy"
+            case 1: return "Study Beginner"
+            case 2: return "Study Novice"
+            case 3: return "Study Champion"
+            case 4: return "Study Expert"
+            case 5: return "Study Master"
+            default: return ""
+        }
+    }
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+        //only apply the blur if the user hasn't disabled transparency effects
+        if !UIAccessibilityIsReduceTransparencyEnabled() {
+            backgroundPic.backgroundColor = UIColor.clearColor()
+            
+            let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
+            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+            blurEffectView.frame = backgroundPic.bounds
+            blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+            
+            self.view.addSubview(blurEffectView)
+            self.view.addSubview(studyScore)
+            self.view.addSubview(studyTitle)
+        }
+        else {
+            backgroundPic.backgroundColor = UIColor.blackColor()
+        }
+        
+        profilePicture.layer.borderWidth = 1
+        profilePicture.layer.masksToBounds = false
+        profilePicture.layer.borderColor = UIColor.whiteColor().CGColor
+        profilePicture.layer.cornerRadius = profilePicture.frame.size.width / 2
+        profilePicture.clipsToBounds = true
+        
+        self.view.bringSubviewToFront(profilePicture)
+        tableView.backgroundColor = UIColor.blackColor()
 
+        
         ref.observeEventType(.Value, withBlock: { snapshot in
             
             for stuff in snapshot.children {
                 
                 let id = stuff.value.objectForKey("id") as! NSString
+                
                 if(id == self.passedID) {
                     self.setAllUserData(stuff as! FDataSnapshot)
                 }
@@ -127,7 +172,7 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
             self.dbClasses = internalClasses
             self.classDictionary = localDict
             
-            print("Who is in what classes?")
+            print("Classes: Students")
             print(self.classDictionary)
         })
         
@@ -143,7 +188,7 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
             self.studentDictionary = localDict
             
-            print("What's the student dict look like?")
+            print("ID: Name")
             print(self.studentDictionary)
         })
         
@@ -158,18 +203,44 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
             
             self.friendsList = friends
-            
-            print("What is my friends list?")
+        
+            print("Here are all my friends using this app too")
             print(self.friendsList)
         })
-        
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        tableView.allowsSelection = true
     }
+    
+    func returnAllFriendsInClass(className: String) -> [String] {
+        
+        var friends : [String] = []
+        
+        for friend in friendsList {
+            
+            if((classDictionary[className]!.contains(friend)) != false) {
+                friends.append(friend)
+            }
+        }
+        
+        return friends
+    }
+    
+    
+    func isFriendsInClass(className: String) -> Bool {
+        
+        for friend in friendsList {
+            
+            if((classDictionary[className]?.contains(friend)) != false) {
+                return true
+            }
+        }
+        
+        return false
+    }
+    
     
     func setUpStudentDictionary(snapshot: FDataSnapshot) -> String {
         return snapshot.value as! String
     }
+    
     
     func setUpClassDictionary(classString: String!, classInfo: FDataSnapshot) -> [String] {
         
@@ -182,6 +253,7 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return students
     }
     
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
     }
@@ -192,40 +264,21 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(items[0] == "") {
-            return 0
-        }
-        else {
-            return items.count
-        }
+        return items.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
         cell.textLabel?.text = items[indexPath.item]
+        cell.textLabel?.textColor = UIColor.orangeColor()
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.passedList = self.returnAllFriendsInClass(items[indexPath.row])
+        self.passedList = returnAllFriendsInClass(items[indexPath.row])
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         self.performSegueWithIdentifier("goToFriends", sender: self)
     }
-    
-    func returnAllFriendsInClass(className: String) -> [String] {
-        
-        var friends : [String] = []
-        
-        for friend in friendsList {
-            
-            if((classDictionary[className]?.contains(friend)) != false) {
-                friends.append(friend)
-            }
-        }
-        
-        return friends
-    }
-    
     
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
@@ -233,39 +286,20 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
         if editingStyle == UITableViewCellEditingStyle.Delete {
             
-            let classBooleanString = "/" + String(self.passedID) + "/classBoolean"
-            let fullClassBooleanString = self.ref.description + classBooleanString
-            let classBooleanURL = Firebase(url: fullClassBooleanString)
-            var classString = ""
+            let classString = items[indexPath.row]
+            items.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
             
-            if(items.count == 1) {
-                classString = items[0]
-                items[0] = ""
-                classBooleanURL.setValue(true)
-            }
-            else {
-                classString = items[indexPath.row]
-                items.removeAtIndex(indexPath.row)
-                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
-            }
-
-            let currentClassesString = "/" + String(self.passedID) + "/currentClasses"
-            let fullCurrentClassesString = self.ref.description + currentClassesString
-            let currentClassesURL = Firebase(url: fullCurrentClassesString)
+            let currentClasses = self.ref.childByAppendingPath(self.passedID as String).childByAppendingPath("currentClasses")
+            let classReference = classRef.childByAppendingPath(classString).childByAppendingPath("currentStudents")
             
-            let classReference = classRef.childByAppendingPath(classString + "/currentStudents")
-            let currentState = self.classDictionary[classString] as [String]!
+            let newStudents = self.removeStudentName(String(self.firstName) + " " + String(self.lastName), className: classString)
+            classDictionary[classString] = newStudents
             
-            if(currentState.count == 1) {
-                classDictionary[classString] = nil
-            }
-            else {
-                let newStudents = self.removeStudentName(String(self.firstName) + " " + String(self.lastName), className: classString)
-                classDictionary[classString] = newStudents
-            }
-            currentClassesURL.setValue(items)
+            currentClasses.setValue(items)
             classReference.setValue(classDictionary[classString])
             tableView.reloadData()
         }
@@ -292,6 +326,7 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.presentViewController(alert, animated: true, completion: nil)
      }
     
+    
     //Add new class to the list
     func wordEntered(alert: UIAlertAction!) {
         
@@ -306,27 +341,17 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
             sendAlert("ERROR", message: "Class field cannot have a dash or space!")
         }
         else {
-        
-            let classBooleanString = "/" + String(self.passedID) + "/classBoolean"
-            let fullClassBooleanString = self.ref.description + classBooleanString
-            let classBooleanURL = Firebase(url: fullClassBooleanString)
-            
-            if(self.firstEntry) {
-                items[0] = self.wordField!.text!.uppercaseString
-                classBooleanURL.setValue(false)
-            }
-            else {
-                items.append(self.wordField!.text!.uppercaseString)
-            }
-
-            let currentClassesString = "/" + String(self.passedID) + "/currentClasses"
-            let fullCurrentClassesString = self.ref.description + currentClassesString
-            let currentClassesURL = Firebase(url: fullCurrentClassesString)
-            currentClassesURL.setValue(items)
-            
             
             let classString = self.wordField!.text!.uppercaseString
-            let classReference = classRef.childByAppendingPath(classString + "/currentStudents")
+        
+            items.append(classString)
+
+            let currentClasses = self.ref.childByAppendingPath(self.passedID as String).childByAppendingPath("currentClasses")
+            currentClasses.setValue(items)
+
+
+            let classReference = classRef.childByAppendingPath(classString).childByAppendingPath("currentStudents")
+            
             
             if(dbClasses.contains(classString)) {
                 
@@ -343,6 +368,10 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 newArr.append(String(self.firstName) + " " + String(self.lastName))
                 classDictionary[classString] = newArr
             }
+            
+            if(isFriendsInClass(classString)) {
+                sendAlert("Notification", message: "You have new study buddies!")
+            }
 
             classReference.setValue(classDictionary[classString])
             tableView.reloadData()
@@ -353,12 +382,10 @@ class secondViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if(segue.identifier == "goToFriends") {
-    
-            let dest = segue.destinationViewController.childViewControllers
-            let bob = dest[0] as! ClassmatesViewController
-            bob.friends = self.passedList
-            bob.facebookID = self.passedID
-            bob.studentDictionary = self.studentDictionary
+            let dest = segue.destinationViewController as! ClassmatesViewController
+            dest.friends = passedList
+            dest.facebookID = passedID
+            dest.studentDictionary = studentDictionary
         }
     }
     

@@ -20,10 +20,10 @@ struct FacebookProfile {
     var profilePic: String!
     var numberOfRatings: Int!
     var id: NSString!
-    var classBoolean: Bool!
+    var notifications: [String]
     
     
-    init(firstName: String!, lastName: String!, studyScore: Int!, studyTitle: String!, currentGroups: [String], currentClasses: [String], profilePic: String!, numberOfRatings: Int!, id: NSString!, classBoolean: Bool!) {
+    init(firstName: String!, lastName: String!, studyScore: Int!, studyTitle: String!, currentGroups: [String], currentClasses: [String], profilePic: String!, numberOfRatings: Int!, id: NSString!, notifications: [String]) {
         
         self.firstName = firstName
         self.lastName = lastName
@@ -34,7 +34,7 @@ struct FacebookProfile {
         self.profilePic = profilePic
         self.numberOfRatings = numberOfRatings
         self.id = id
-        self.classBoolean = true;
+        self.notifications = notifications
     }
     
 
@@ -49,7 +49,7 @@ struct FacebookProfile {
             "profilePic": profilePic,
             "numberRatings": numberOfRatings,
             "id": String(id),
-            "classBoolean": classBoolean
+            "notifications": notifications
         ]
     }
 }

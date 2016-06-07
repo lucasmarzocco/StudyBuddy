@@ -1,4 +1,5 @@
-//
+
+ //
 //  ViewController.swift
 //  StudyBuddy
 //
@@ -34,13 +35,14 @@ class ViewController: UIViewController {
             self.firstName = firstName
             self.lastName = lastName
 
-            let groups: [String] = [""]
-            let classes: [String] = [""]
+            let groups: [String] = []
+            let classes: [String] = []
+            let notifications: [String] = []
             let id: String = facebookID as String
             
             if(!currentProfiles.contains(id)) {
                 
-                let newProfile = FacebookProfile(firstName: self.firstName, lastName: self.lastName, studyScore: 0, studyTitle: "Beginner", currentGroups: groups, currentClasses: classes, profilePic: facebookProfileUrl?.absoluteString, numberOfRatings: 0, id: facebookID, classBoolean: true)
+                let newProfile = FacebookProfile(firstName: self.firstName, lastName: self.lastName, studyScore: 0, studyTitle: "Beginner", currentGroups: groups, currentClasses: classes, profilePic: facebookProfileUrl?.absoluteString, numberOfRatings: 0, id: facebookID, notifications: notifications)
             
                 let profileRef = self.ref.childByAppendingPath(id)
                 profileRef.setValue(newProfile.toAnyObject())
@@ -84,6 +86,10 @@ class ViewController: UIViewController {
                 }
                 
             })}
+        
+        else {
+            logout(self)
+        }
     }
     
     func addToFirebaseDictionary(id: NSString!, name: NSString!) {
@@ -120,8 +126,6 @@ class ViewController: UIViewController {
             
             self.currentProfiles = profiles
             
-            }, withCancelBlock: { error in
-                print("An error has occurred")
         })
     }
 
@@ -137,6 +141,10 @@ class ViewController: UIViewController {
             let dest = segue.destinationViewController.childViewControllers
             let bob = dest[0].childViewControllers[0] as! secondViewController
             bob.passedID = self.facebookID
+            let bob1 = dest[1].childViewControllers[0] as! GroupViewController
+            bob1.facebookID = self.facebookID
+            let bob2 = dest[2].childViewControllers[0] as! NotificationViewController
+            bob2.passedID = self.facebookID
         }
     }
 }

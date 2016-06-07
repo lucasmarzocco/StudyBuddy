@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StudyBuddy/AppDelegate.swift"
-            timestampString = "481446411.154196"
+            timestampString = "486685079.520894"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "24"
@@ -85,15 +85,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StudyBuddy/ViewController.swift"
-            timestampString = "485994936.871067"
+            timestampString = "486945818.349017"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "returnUserInfo(_:firstName:lastName:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -105,11 +105,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StudyBuddy/secondViewController.swift"
-            timestampString = "486029448.322222"
+            timestampString = "486680174.248375"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "secondViewController"
             landmarkType = "3">
             <Locations>
@@ -261,12 +261,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "StudyBuddy/ClassmatesViewController.swift"
-            timestampString = "486027259.569759"
+            timestampString = "486974161.4627"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "tableView(_:didSelectRowAtIndexPath:)"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "tableView(_:cellForRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -15,11 +15,13 @@ class FriendProfileViewController: UIViewController {
     var profPicRef = Firebase(url: "https://incandescent-heat-2456.firebaseio.com/Users")
     var studyScoreRef = Firebase(url: "https://incandescent-heat-2456.firebaseio.com/Users")
     var numberRatings = Firebase(url: "https://incandescent-heat-2456.firebaseio.com/Users")
+    var notRef = Firebase(url: "https://incandescent-heat-2456.firebaseio.com/Users")
     
     @IBOutlet weak var profilePicture: UIImageView!
     @IBOutlet weak var studyScore: UIImageView!
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var ratingCount: UILabel!
+    @IBOutlet weak var backgroundPic: UIImageView!
     
     var wordField1: UITextField?
     var wordField2: UITextField?
@@ -29,20 +31,52 @@ class FriendProfileViewController: UIViewController {
     var score: Int!
     var numberOfRatings: Int!
     var boolean: DarwinBoolean!
+    var notifications: [String] = []
+    var studentDictionary: [String:String] = [:]
+    var userID: String!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
+        //only apply the blur if the user hasn't disabled transparency effects
+        if !UIAccessibilityIsReduceTransparencyEnabled() {
+            backgroundPic.backgroundColor = UIColor.clearColor()
+            
+            let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
+            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+            //always fill the view
+            blurEffectView.frame = backgroundPic.bounds
+            blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+            
+            self.view.addSubview(blurEffectView) //if you have more UIViews, use an insertSubview API to place it where needed
+            self.view.addSubview(studyScore)
+            self.view.addSubview(ratingCount)
+        }
+        else {
+            backgroundPic.backgroundColor = UIColor.blackColor()
+        }
+        
+        profilePicture.layer.borderWidth = 1
+        profilePicture.layer.masksToBounds = false
+        profilePicture.layer.borderColor = UIColor.whiteColor().CGColor
+        profilePicture.layer.cornerRadius = profilePicture.frame.size.width / 2
+        profilePicture.clipsToBounds = true
+        
+        self.view.bringSubviewToFront(profilePicture)
+ 
         boolean = true
         label.text = profileName
-        profPicRef = ref.childByAppendingPath(profileID).childByAppendingPath("/profilePic")
-        studyScoreRef = ref.childByAppendingPath(profileID).childByAppendingPath("/studyScore")
-        numberRatings = ref.childByAppendingPath(profileID).childByAppendingPath("/numberRatings")
+        profPicRef = ref.childByAppendingPath(profileID).childByAppendingPath("profilePic")
+        studyScoreRef = ref.childByAppendingPath(profileID).childByAppendingPath("studyScore")
+        numberRatings = ref.childByAppendingPath(profileID).childByAppendingPath("numberRatings")
+        notRef = ref.childByAppendingPath(profileID).childByAppendingPath("notifications")
         
         profPicRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
             let url = NSURL(string: snapshot.value as! String)
             let data = NSData(contentsOfURL: url!)
             self.profilePicture.image = UIImage(data:data!)
+            self.backgroundPic.image = UIImage(data:data!)
         })
         
         numberRatings.observeSingleEventOfType(.Value, withBlock: { snapshot in
@@ -63,7 +97,26 @@ class FriendProfileViewController: UIViewController {
             let url = "\(score)Stars"
             self.score = snapshot.value as! Int
             self.studyScore.image = UIImage(named:url)
-        }) 
+        })
+        
+        notRef.observeEventType(.Value, withBlock: { snapshot in
+            
+            var localItems: [String] = []
+            
+            for stuff in snapshot.children {
+                
+                let item = self.getValue(stuff as! FDataSnapshot)
+                print("ON friend profile view controller (From FIREBASE): " + item)
+                localItems.append(item)
+            }
+            
+            self.notifications = localItems
+        })
+        
+    }
+    
+    func getValue(snapshot: FDataSnapshot) -> String {
+        return snapshot.value as! String
     }
 
     override func didReceiveMemoryWarning() {
@@ -79,7 +132,7 @@ class FriendProfileViewController: UIViewController {
             self.wordField1 = textField })
         
         alert.addTextFieldWithConfigurationHandler ({ (textField: UITextField!) in
-            textField.placeholder = "Ex: 10/2/2016"
+            textField.placeholder = "Ex: 10-2-2016"
             self.wordField2 = textField })
         
         alert.addTextFieldWithConfigurationHandler ({ (textField: UITextField!) in
@@ -117,9 +170,21 @@ class FriendProfileViewController: UIViewController {
     
     //Add new class to the list
     func wordEntered(alert: UIAlertAction!) {
-        print(self.wordField1!.text)
-        print(self.wordField2!.text)
-        print(self.wordField3!.text)
+        
+        let notification = "R/" + self.wordField1!.text! + "/" + self.wordField2!.text! + "/"
+        let notification1 = notification + self.wordField3!.text! + "/"
+        let notification2 = notification1 + self.userID + "/" + self.studentDictionary[self.userID]!
+        
+        print("BEFORE: ")
+        print(self.notifications)
+        
+        self.notifications.append(notification2)
+        
+        print("AFTER: ")
+        
+        print(self.notifications)
+        
+        notRef.setValue(self.notifications)
     }
     
     func rating(alert: UIAlertAction!) {

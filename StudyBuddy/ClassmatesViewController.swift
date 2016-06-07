@@ -7,15 +7,19 @@
 //
 
 import UIKit
+import Firebase
 
 class ClassmatesViewController: UITableViewController {
     
     var friends: [String] = []
     var facebookID: NSString = ""
     var studentDictionary: [String:String] = [:]
+    var list: [String]!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        tableView.backgroundColor = UIColor.blackColor()
     }
     
     override func didReceiveMemoryWarning() {
@@ -31,7 +35,8 @@ class ClassmatesViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
-        cell.textLabel?.text = friends[indexPath.item]
+        cell.textLabel?.text = self.friends[indexPath.item]
+        cell.textLabel?.textColor = UIColor.orangeColor()
         return cell
     }
     
@@ -39,6 +44,7 @@ class ClassmatesViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
+    
     
     func findFriendTapped(name: NSString) -> String {
         
@@ -59,6 +65,8 @@ class ClassmatesViewController: UITableViewController {
             let selectedRow = tableView.indexPathForSelectedRow!.row
             vc.profileName = self.friends[selectedRow]
             vc.profileID = self.findFriendTapped(vc.profileName)
+            vc.userID = self.facebookID as String
+            vc.studentDictionary = self.studentDictionary
         }
     }
 }

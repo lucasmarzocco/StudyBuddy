@@ -20,13 +20,9 @@
 		01839F1E1CB208A800BDD110 /* StudyBuddyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01839F1D1CB208A800BDD110 /* StudyBuddyUITests.swift */; };
 		01839F311CB20C7C00BDD110 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01839F2F1CB20C7C00BDD110 /* FBSDKCoreKit.framework */; };
 		01839F321CB20C7C00BDD110 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01839F301CB20C7C00BDD110 /* FBSDKLoginKit.framework */; };
+		01B2A3B41D06705A00622364 /* GroupInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B2A3B31D06705A00622364 /* GroupInfoViewController.swift */; };
 		01CAD4EF1CD01C6100620229 /* secondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CAD4EE1CD01C6100620229 /* secondViewController.swift */; };
-		01D41F221CD711F4007B84C5 /* GamePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D41F1C1CD711F4007B84C5 /* GamePickerViewController.swift */; };
-		01D41F231CD711F4007B84C5 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D41F1D1CD711F4007B84C5 /* Player.swift */; };
-		01D41F241CD711F4007B84C5 /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D41F1E1CD711F4007B84C5 /* PlayerCell.swift */; };
-		01D41F251CD711F4007B84C5 /* PlayerDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D41F1F1CD711F4007B84C5 /* PlayerDetailsViewController.swift */; };
-		01D41F261CD711F4007B84C5 /* PlayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D41F201CD711F4007B84C5 /* PlayersViewController.swift */; };
-		01D41F271CD711F4007B84C5 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D41F211CD711F4007B84C5 /* SampleData.swift */; };
+		01D41F261CD711F4007B84C5 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D41F201CD711F4007B84C5 /* GroupViewController.swift */; };
 		B4F957309B22F2EC9EBDA7A0 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8E39420F677080A672A9148 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,13 +63,9 @@
 		01839F1F1CB208A800BDD110 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01839F2F1CB20C7C00BDD110 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		01839F301CB20C7C00BDD110 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		01B2A3B31D06705A00622364 /* GroupInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupInfoViewController.swift; sourceTree = "<group>"; };
 		01CAD4EE1CD01C6100620229 /* secondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = secondViewController.swift; sourceTree = "<group>"; };
-		01D41F1C1CD711F4007B84C5 /* GamePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamePickerViewController.swift; sourceTree = "<group>"; };
-		01D41F1D1CD711F4007B84C5 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
-		01D41F1E1CD711F4007B84C5 /* PlayerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
-		01D41F1F1CD711F4007B84C5 /* PlayerDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerDetailsViewController.swift; sourceTree = "<group>"; };
-		01D41F201CD711F4007B84C5 /* PlayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayersViewController.swift; sourceTree = "<group>"; };
-		01D41F211CD711F4007B84C5 /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
+		01D41F201CD711F4007B84C5 /* GroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		281590494CF59C9B53FA085E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		6A6C77EDD2616115DE209129 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		E8E39420F677080A672A9148 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,17 +127,13 @@
 			isa = PBXGroup;
 			children = (
 				01839EFD1CB208A800BDD110 /* AppDelegate.swift */,
-				01D41F1D1CD711F4007B84C5 /* Player.swift */,
 				01741F101CD815320066662E /* FacebookProfile.swift */,
-				01D41F1E1CD711F4007B84C5 /* PlayerCell.swift */,
-				01D41F211CD711F4007B84C5 /* SampleData.swift */,
 				01839EFF1CB208A800BDD110 /* ViewController.swift */,
 				01CAD4EE1CD01C6100620229 /* secondViewController.swift */,
 				017193731CD6BA3700A59CA5 /* ClassmatesViewController.swift */,
 				017193751CD6C3D000A59CA5 /* FriendProfileViewController.swift */,
-				01D41F1C1CD711F4007B84C5 /* GamePickerViewController.swift */,
-				01D41F1F1CD711F4007B84C5 /* PlayerDetailsViewController.swift */,
-				01D41F201CD711F4007B84C5 /* PlayersViewController.swift */,
+				01D41F201CD711F4007B84C5 /* GroupViewController.swift */,
+				01B2A3B31D06705A00622364 /* GroupInfoViewController.swift */,
 				0177FA521CF51F690067372D /* NotificationViewController.swift */,
 				01839F011CB208A800BDD110 /* Main.storyboard */,
 				01839F061CB208A800BDD110 /* LaunchScreen.storyboard */,
@@ -373,19 +361,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01D41F241CD711F4007B84C5 /* PlayerCell.swift in Sources */,
 				017193761CD6C3D000A59CA5 /* FriendProfileViewController.swift in Sources */,
 				01839F001CB208A800BDD110 /* ViewController.swift in Sources */,
 				01741F111CD815320066662E /* FacebookProfile.swift in Sources */,
-				01D41F261CD711F4007B84C5 /* PlayersViewController.swift in Sources */,
-				01D41F221CD711F4007B84C5 /* GamePickerViewController.swift in Sources */,
+				01D41F261CD711F4007B84C5 /* GroupViewController.swift in Sources */,
 				01CAD4EF1CD01C6100620229 /* secondViewController.swift in Sources */,
-				01D41F251CD711F4007B84C5 /* PlayerDetailsViewController.swift in Sources */,
-				01D41F231CD711F4007B84C5 /* Player.swift in Sources */,
 				0177FA531CF51F690067372D /* NotificationViewController.swift in Sources */,
-				01D41F271CD711F4007B84C5 /* SampleData.swift in Sources */,
 				017193741CD6BA3700A59CA5 /* ClassmatesViewController.swift in Sources */,
 				01839EFE1CB208A800BDD110 /* AppDelegate.swift in Sources */,
+				01B2A3B41D06705A00622364 /* GroupInfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
