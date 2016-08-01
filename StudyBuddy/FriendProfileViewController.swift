@@ -168,8 +168,16 @@ class FriendProfileViewController: UIViewController {
         }
     }
     
+    @IBAction func addToGroup(sender: AnyObject) {
+        
+        self.sendAlert("Warning", message: "Functionality as not been added yet!")
+    }
+    
+    
     //Add new class to the list
     func wordEntered(alert: UIAlertAction!) {
+        
+        print("Very small change here")
         
         let notification = "R/" + self.wordField1!.text! + "/" + self.wordField2!.text! + "/"
         let notification1 = notification + self.wordField3!.text! + "/"

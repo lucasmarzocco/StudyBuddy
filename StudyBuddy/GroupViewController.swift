@@ -32,8 +32,6 @@ class GroupViewController: UITableViewController, UIPickerViewDelegate {
                 newItems.append(group)
             }
             self.groups = newItems
-            print("my groups")
-            print(self.groups)
             self.tableView.reloadData()
         })
         
@@ -50,11 +48,7 @@ class GroupViewController: UITableViewController, UIPickerViewDelegate {
             }
             
             self.dbGroups = internalGroups
-            print("groups on database")
-            print(self.dbGroups)
             self.groupDictionary = localDict
-            print("group dict")
-            print(self.groupDictionary)
             self.tableView.reloadData()
 
         })
@@ -70,8 +64,6 @@ class GroupViewController: UITableViewController, UIPickerViewDelegate {
             }
             
             self.studentDictionary = localDict
-            print("student dict")
-            print(self.studentDictionary)
         })
     }
     
@@ -138,6 +130,7 @@ class GroupViewController: UITableViewController, UIPickerViewDelegate {
         }
         
         else {
+            
             let groupString = self.groupName!.text!.uppercaseString
             groups.append(groupString)
             groupRef.setValue(groups)
